@@ -1,7 +1,7 @@
 export const revalidate = false
 
 export async function GET() {
-  const baseUrl = 'https://docs.sim.ai'
+  const baseUrl = 'https://docs.nocobuilder.cloud'
 
   const robotsTxt = `# Robots.txt for Sim Documentation
 # Generated on ${new Date().toISOString()}

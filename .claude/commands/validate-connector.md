@@ -21,22 +21,22 @@ When the user asks you to validate a connector:
 Read **every** file for the connector — do not skip any:
 
 ```
-apps/sim/connectors/{service}/{service}.ts   # Connector implementation
-apps/sim/connectors/{service}/index.ts       # Barrel export
-apps/sim/connectors/registry.ts              # Connector registry entry
-apps/sim/connectors/types.ts                 # ConnectorConfig interface, ExternalDocument, etc.
-apps/sim/connectors/utils.ts                 # Shared utilities (computeContentHash, htmlToPlainText, etc.)
-apps/sim/lib/oauth/oauth.ts                  # OAUTH_PROVIDERS — single source of truth for scopes
-apps/sim/lib/oauth/utils.ts                  # getCanonicalScopesForProvider, getScopesForService, SCOPE_DESCRIPTIONS
-apps/sim/lib/oauth/types.ts                  # OAuthService union type
-apps/sim/components/icons.tsx                 # Icon definition for the service
+apps/nocobuilder/connectors/{service}/{service}.ts   # Connector implementation
+apps/nocobuilder/connectors/{service}/index.ts       # Barrel export
+apps/nocobuilder/connectors/registry.ts              # Connector registry entry
+apps/nocobuilder/connectors/types.ts                 # ConnectorConfig interface, ExternalDocument, etc.
+apps/nocobuilder/connectors/utils.ts                 # Shared utilities (computeContentHash, htmlToPlainText, etc.)
+apps/nocobuilder/lib/oauth/oauth.ts                  # OAUTH_PROVIDERS — single source of truth for scopes
+apps/nocobuilder/lib/oauth/utils.ts                  # getCanonicalScopesForProvider, getScopesForService, SCOPE_DESCRIPTIONS
+apps/nocobuilder/lib/oauth/types.ts                  # OAuthService union type
+apps/nocobuilder/components/icons.tsx                 # Icon definition for the service
 ```
 
 If the connector uses selectors, also read:
 ```
-apps/sim/hooks/selectors/registry.ts         # Selector key definitions
-apps/sim/hooks/selectors/types.ts            # SelectorKey union type
-apps/sim/lib/workflows/subblocks/context.ts  # SELECTOR_CONTEXT_FIELDS
+apps/nocobuilder/hooks/selectors/registry.ts         # Selector key definitions
+apps/nocobuilder/hooks/selectors/types.ts            # SelectorKey union type
+apps/nocobuilder/lib/workflows/subblocks/context.ts  # SELECTOR_CONTEXT_FIELDS
 ```
 
 ## Step 2: Pull API Documentation

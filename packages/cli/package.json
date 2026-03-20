@@ -1,5 +1,5 @@
 {
-  "name": "simstudio",
+  "name": "nocobuilder",
   "version": "0.1.19",
   "description": "Sim CLI - Run Sim with a single command",
   "type": "module",
@@ -10,7 +10,7 @@
     }
   },
   "bin": {
-    "simstudio": "dist/index.js"
+    "nocobuilder": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",
@@ -25,7 +25,7 @@
     "dist"
   ],
   "keywords": [
-    "simstudio",
+    "nocobuilder",
     "ai",
     "workflow",
     "cli",
@@ -33,7 +33,7 @@
     "automation",
     "docker"
   ],
-  "author": "Sim",
+  "author": "AgentNXXT",
   "license": "Apache-2.0",
   "engines": {
     "node": ">=16"

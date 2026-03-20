@@ -49,7 +49,7 @@ const createMockHeaders = (customHeaders: Record<string, string> = {}) => {
     'Accept-Encoding': 'gzip, deflate, br',
     'Cache-Control': 'no-cache',
     Connection: 'keep-alive',
-    Referer: 'https://www.sim.ai',
+    Referer: 'https://www.nocobuilder.cloud',
     'Sec-Ch-Ua': 'Chromium;v=91, Not-A.Brand;v=99',
     'Sec-Ch-Ua-Mobile': '?0',
     'Sec-Ch-Ua-Platform': '"macOS"',

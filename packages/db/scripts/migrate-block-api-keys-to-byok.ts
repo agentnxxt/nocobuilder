@@ -117,7 +117,7 @@ if (!ENCRYPTION_KEY || ENCRYPTION_KEY.length !== 64) {
   process.exit(1)
 }
 
-// ---------- Encryption (mirrors apps/sim/lib/core/security/encryption.ts) ----------
+// ---------- Encryption (mirrors apps/nocobuilder/lib/core/security/encryption.ts) ----------
 function getEncryptionKeyBuffer(): Buffer {
   return Buffer.from(ENCRYPTION_KEY!, 'hex')
 }

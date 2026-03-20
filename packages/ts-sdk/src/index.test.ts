@@ -1,31 +1,31 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { SimStudioClient, SimStudioError } from './index'
+import { NocoBuilderClient, NocoBuilderError } from './index'
 
 vi.mock('node-fetch', () => ({
   default: vi.fn(),
 }))
 
-describe('SimStudioClient', () => {
-  let client: SimStudioClient
+describe('NocoBuilderClient', () => {
+  let client: NocoBuilderClient
 
   beforeEach(() => {
-    client = new SimStudioClient({
+    client = new NocoBuilderClient({
       apiKey: 'test-api-key',
-      baseUrl: 'https://test.sim.ai',
+      baseUrl: 'https://test.nocobuilder.cloud',
     })
     vi.clearAllMocks()
   })
 
   describe('constructor', () => {
     it('should create a client with correct configuration', () => {
-      expect(client).toBeInstanceOf(SimStudioClient)
+      expect(client).toBeInstanceOf(NocoBuilderClient)
     })
 
     it('should use default base URL when not provided', () => {
-      const defaultClient = new SimStudioClient({
+      const defaultClient = new NocoBuilderClient({
         apiKey: 'test-api-key',
       })
-      expect(defaultClient).toBeInstanceOf(SimStudioClient)
+      expect(defaultClient).toBeInstanceOf(NocoBuilderClient)
     })
   })
 
@@ -43,16 +43,16 @@ describe('SimStudioClient', () => {
 
   describe('setBaseUrl', () => {
     it('should update the base URL', () => {
-      const newBaseUrl = 'https://new.sim.ai'
+      const newBaseUrl = 'https://new.nocobuilder.cloud'
       client.setBaseUrl(newBaseUrl)
       expect((client as any).baseUrl).toBe(newBaseUrl)
     })
 
     it('should strip trailing slash from base URL', () => {
-      const urlWithSlash = 'https://test.sim.ai/'
+      const urlWithSlash = 'https://test.nocobuilder.cloud/'
       client.setBaseUrl(urlWithSlash)
       // Verify the trailing slash was actually stripped
-      expect((client as any).baseUrl).toBe('https://test.sim.ai')
+      expect((client as any).baseUrl).toBe('https://test.nocobuilder.cloud')
     })
   })
 
@@ -216,7 +216,7 @@ describe('SimStudioClient', () => {
 
       // Verify correct endpoint was called
       const calls = vi.mocked(fetch.default).mock.calls
-      expect(calls[0][0]).toBe('https://test.sim.ai/api/jobs/task-123')
+      expect(calls[0][0]).toBe('https://test.nocobuilder.cloud/api/jobs/task-123')
     })
 
     it('should handle job not found error', async () => {
@@ -235,7 +235,7 @@ describe('SimStudioClient', () => {
       }
       vi.mocked(fetch.default).mockResolvedValue(mockResponse as any)
 
-      await expect(client.getJobStatus('invalid-task')).rejects.toThrow(SimStudioError)
+      await expect(client.getJobStatus('invalid-task')).rejects.toThrow(NocoBuilderError)
       await expect(client.getJobStatus('invalid-task')).rejects.toThrow('Job not found')
     })
   })
@@ -448,7 +448,7 @@ describe('SimStudioClient', () => {
 
       // Verify correct endpoint was called
       const calls = vi.mocked(fetch.default).mock.calls
-      expect(calls[0][0]).toBe('https://test.sim.ai/api/users/me/usage-limits')
+      expect(calls[0][0]).toBe('https://test.nocobuilder.cloud/api/users/me/usage-limits')
     })
 
     it('should handle unauthorized error', async () => {
@@ -468,7 +468,7 @@ describe('SimStudioClient', () => {
 
       vi.mocked(fetch.default).mockResolvedValue(mockResponse as any)
 
-      await expect(client.getUsageLimits()).rejects.toThrow(SimStudioError)
+      await expect(client.getUsageLimits()).rejects.toThrow(NocoBuilderError)
       await expect(client.getUsageLimits()).rejects.toThrow('Invalid API key')
     })
   })
@@ -635,15 +635,15 @@ describe('SimStudioClient', () => {
   })
 })
 
-describe('SimStudioError', () => {
+describe('NocoBuilderError', () => {
   it('should create error with message', () => {
-    const error = new SimStudioError('Test error')
+    const error = new NocoBuilderError('Test error')
     expect(error.message).toBe('Test error')
-    expect(error.name).toBe('SimStudioError')
+    expect(error.name).toBe('NocoBuilderError')
   })
 
   it('should create error with code and status', () => {
-    const error = new SimStudioError('Test error', 'TEST_CODE', 400)
+    const error = new NocoBuilderError('Test error', 'TEST_CODE', 400)
     expect(error.message).toBe('Test error')
     expect(error.code).toBe('TEST_CODE')
     expect(error.status).toBe(400)

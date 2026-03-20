@@ -14,7 +14,7 @@ Déploiement en un clic avec provisionnement automatique de PostgreSQL.
 
 ![Déployer sur Railway](https://railway.app/button.svg)
 
-](https://railway.com/new/template/sim-studio)
+](https://railway.com/new/template/nocobuilder)
 
 Après le déploiement, ajoutez des variables d'environnement dans le tableau de bord Railway :
 - `BETTER_AUTH_SECRET`, `ENCRYPTION_KEY`, `INTERNAL_API_SECRET` (générées automatiquement)
@@ -67,11 +67,11 @@ docker --version
 ### Déployer Sim
 
 ```bash
-git clone https://github.com/simstudioai/sim.git && cd sim
+git clone https://github.com/nocobuilder/sim.git && cd sim
 
 # Create .env with secrets
 cat > .env << EOF
-DATABASE_URL=postgresql://postgres:postgres@db:5432/simstudio
+DATABASE_URL=postgresql://postgres:postgres@db:5432/nocobuilder
 BETTER_AUTH_SECRET=$(openssl rand -hex 32)
 ENCRYPTION_KEY=$(openssl rand -hex 32)
 INTERNAL_API_SECRET=$(openssl rand -hex 32)

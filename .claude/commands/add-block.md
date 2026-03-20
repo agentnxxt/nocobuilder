@@ -10,7 +10,7 @@ You are an expert at creating block configurations for Sim. You understand the s
 ## Your Task
 
 When the user asks you to create a block:
-1. Create the block file in `apps/sim/blocks/blocks/{service}.ts`
+1. Create the block file in `apps/nocobuilder/blocks/blocks/{service}.ts`
 2. Configure all subBlocks with proper types, conditions, and dependencies
 3. Wire up tools correctly
 
@@ -27,7 +27,7 @@ export const {ServiceName}Block: BlockConfig = {
   name: '{Service Name}',               // Human readable
   description: 'Brief description',     // One sentence
   longDescription: 'Detailed description for docs',
-  docsLink: 'https://docs.sim.ai/tools/{service}',
+  docsLink: 'https://docs.nocobuilder.cloud/tools/{service}',
   category: 'tools',                    // 'tools' | 'blocks' | 'triggers'
   bgColor: '#HEXCOLOR',                 // Brand color
   icon: {ServiceName}Icon,
@@ -612,7 +612,7 @@ export const ServiceV2Block: BlockConfig = {
 ## Registering Blocks
 
 After creating the block, remind the user to:
-1. Import in `apps/sim/blocks/registry.ts`
+1. Import in `apps/nocobuilder/blocks/registry.ts`
 2. Add to the `registry` object (alphabetically):
 
 ```typescript
@@ -637,7 +637,7 @@ export const ServiceBlock: BlockConfig = {
   name: 'Service',
   description: 'Integrate with Service API',
   longDescription: 'Full description for documentation...',
-  docsLink: 'https://docs.sim.ai/tools/service',
+  docsLink: 'https://docs.nocobuilder.cloud/tools/service',
   category: 'tools',
   bgColor: '#FF6B6B',
   icon: ServiceIcon,

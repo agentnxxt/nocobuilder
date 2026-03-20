@@ -1,10 +1,10 @@
-import { SimStudioClient, SimStudioError } from '../src/index'
+import { NocoBuilderClient, NocoBuilderError } from '../src/index'
 
 // Example 1: Basic workflow execution
 async function basicExample() {
-  const client = new SimStudioClient({
+  const client = new NocoBuilderClient({
     apiKey: process.env.SIM_API_KEY!,
-    baseUrl: 'https://sim.ai',
+    baseUrl: 'https://nocobuilder.cloud',
   })
 
   try {
@@ -19,7 +19,7 @@ async function basicExample() {
       console.log('❌ Workflow failed:', result.error)
     }
   } catch (error) {
-    if (error instanceof SimStudioError) {
+    if (error instanceof NocoBuilderError) {
       console.error('SDK Error:', error.message, 'Code:', error.code)
     } else {
       console.error('Unexpected error:', error)
@@ -29,7 +29,7 @@ async function basicExample() {
 
 // Example 2: Workflow execution with input data
 async function withInputExample() {
-  const client = new SimStudioClient({
+  const client = new NocoBuilderClient({
     apiKey: process.env.SIM_API_KEY!,
   })
 
@@ -59,7 +59,7 @@ async function withInputExample() {
       console.log('❌ Workflow failed:', result.error)
     }
   } catch (error) {
-    if (error instanceof SimStudioError) {
+    if (error instanceof NocoBuilderError) {
       console.error('SDK Error:', error.message, 'Code:', error.code)
     } else {
       console.error('Unexpected error:', error)
@@ -69,7 +69,7 @@ async function withInputExample() {
 
 // Example 3: Workflow validation and status checking
 async function statusExample() {
-  const client = new SimStudioClient({
+  const client = new NocoBuilderClient({
     apiKey: process.env.SIM_API_KEY!,
   })
 
@@ -98,7 +98,7 @@ async function statusExample() {
       }
     }
   } catch (error) {
-    if (error instanceof SimStudioError) {
+    if (error instanceof NocoBuilderError) {
       console.error('SDK Error:', error.message, 'Code:', error.code)
     } else {
       console.error('Unexpected error:', error)
@@ -108,7 +108,7 @@ async function statusExample() {
 
 // Example 4: Workflow execution with streaming
 async function streamingExample() {
-  const client = new SimStudioClient({
+  const client = new NocoBuilderClient({
     apiKey: process.env.SIM_API_KEY!,
   })
 
@@ -130,7 +130,7 @@ async function streamingExample() {
       console.log('❌ Workflow failed:', result.error)
     }
   } catch (error) {
-    if (error instanceof SimStudioError) {
+    if (error instanceof NocoBuilderError) {
       console.error('SDK Error:', error.message, 'Code:', error.code)
     } else {
       console.error('Unexpected error:', error)

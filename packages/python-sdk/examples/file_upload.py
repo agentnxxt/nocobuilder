@@ -5,7 +5,7 @@ This example demonstrates how to upload files when executing a workflow.
 Files are automatically detected and converted to base64 format.
 """
 
-from simstudio import SimStudioClient
+from nocobuilder import NocoBuilderClient
 import os
 
 
@@ -15,7 +15,7 @@ def main():
     if not api_key:
         raise ValueError('SIM_API_KEY environment variable is required')
 
-    client = SimStudioClient(api_key=api_key)
+    client = NocoBuilderClient(api_key=api_key)
 
     # Example 1: Upload a single file
     # Include file under the field name from your workflow's API trigger input format

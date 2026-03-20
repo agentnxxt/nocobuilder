@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { LanguageDropdown } from '@/components/ui/language-dropdown'
 import { SearchTrigger } from '@/components/ui/search-trigger'
-import { SimLogoFull } from '@/components/ui/sim-logo'
+import { SimLogoFull } from '@/components/ui/nocobuilder-logo'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { cn } from '@/lib/utils'
 
@@ -21,7 +21,7 @@ const NAV_TABS = [
     match: (p: string) => p.includes('/api-reference'),
     external: false,
   },
-  { label: 'Mothership', href: 'https://sim.ai', external: true },
+  { label: 'Mothership', href: 'https://nocobuilder.cloud', external: true },
 ] as const
 
 export function Navbar() {

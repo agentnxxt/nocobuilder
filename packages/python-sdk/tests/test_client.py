@@ -4,59 +4,59 @@ Tests for the Sim Python SDK
 
 import pytest
 from unittest.mock import Mock, patch
-from simstudio import SimStudioClient, SimStudioError, WorkflowExecutionResult, WorkflowStatus
+from nocobuilder import NocoBuilderClient, NocoBuilderError, WorkflowExecutionResult, WorkflowStatus
 
 
-def test_simstudio_client_initialization():
-    """Test SimStudioClient initialization."""
-    client = SimStudioClient(api_key="test-api-key", base_url="https://test.sim.ai")
+def test_nocobuilder_client_initialization():
+    """Test NocoBuilderClient initialization."""
+    client = NocoBuilderClient(api_key="test-api-key", base_url="https://test.nocobuilder.cloud")
     assert client.api_key == "test-api-key"
-    assert client.base_url == "https://test.sim.ai"
+    assert client.base_url == "https://test.nocobuilder.cloud"
 
 
-def test_simstudio_client_default_base_url():
-    """Test SimStudioClient with default base URL."""
-    client = SimStudioClient(api_key="test-api-key")
+def test_nocobuilder_client_default_base_url():
+    """Test NocoBuilderClient with default base URL."""
+    client = NocoBuilderClient(api_key="test-api-key")
     assert client.api_key == "test-api-key"
-    assert client.base_url == "https://sim.ai"
+    assert client.base_url == "https://nocobuilder.cloud"
 
 
 def test_set_api_key():
     """Test setting a new API key."""
-    client = SimStudioClient(api_key="test-api-key")
+    client = NocoBuilderClient(api_key="test-api-key")
     client.set_api_key("new-api-key")
     assert client.api_key == "new-api-key"
 
 
 def test_set_base_url():
     """Test setting a new base URL."""
-    client = SimStudioClient(api_key="test-api-key")
-    client.set_base_url("https://new.sim.ai/")
-    assert client.base_url == "https://new.sim.ai"
+    client = NocoBuilderClient(api_key="test-api-key")
+    client.set_base_url("https://new.nocobuilder.cloud/")
+    assert client.base_url == "https://new.nocobuilder.cloud"
 
 
 def test_set_base_url_strips_trailing_slash():
     """Test that base URL strips trailing slash."""
-    client = SimStudioClient(api_key="test-api-key")
-    client.set_base_url("https://test.sim.ai/")
-    assert client.base_url == "https://test.sim.ai"
+    client = NocoBuilderClient(api_key="test-api-key")
+    client.set_base_url("https://test.nocobuilder.cloud/")
+    assert client.base_url == "https://test.nocobuilder.cloud"
 
 
-@patch('simstudio.requests.Session.get')
+@patch('nocobuilder.requests.Session.get')
 def test_validate_workflow_returns_false_on_error(mock_get):
     """Test that validate_workflow returns False when request fails."""
-    mock_get.side_effect = SimStudioError("Network error")
+    mock_get.side_effect = NocoBuilderError("Network error")
     
-    client = SimStudioClient(api_key="test-api-key")
+    client = NocoBuilderClient(api_key="test-api-key")
     result = client.validate_workflow("test-workflow-id")
     
     assert result is False
-    mock_get.assert_called_once_with("https://sim.ai/api/workflows/test-workflow-id/status")
+    mock_get.assert_called_once_with("https://nocobuilder.cloud/api/workflows/test-workflow-id/status")
 
 
-def test_simstudio_error():
-    """Test SimStudioError creation."""
-    error = SimStudioError("Test error", "TEST_CODE", 400)
+def test_nocobuilder_error():
+    """Test NocoBuilderError creation."""
+    error = NocoBuilderError("Test error", "TEST_CODE", 400)
     assert str(error) == "Test error"
     assert error.code == "TEST_CODE"
     assert error.status == 400
@@ -86,15 +86,15 @@ def test_workflow_status():
     assert status.needs_redeployment is False
 
 
-@patch('simstudio.requests.Session.close')
+@patch('nocobuilder.requests.Session.close')
 def test_context_manager(mock_close):
-    """Test SimStudioClient as context manager."""
-    with SimStudioClient(api_key="test-api-key") as client:
+    """Test NocoBuilderClient as context manager."""
+    with NocoBuilderClient(api_key="test-api-key") as client:
         assert client.api_key == "test-api-key"
     mock_close.assert_called_once()
 
 
-@patch('simstudio.requests.Session.post')
+@patch('nocobuilder.requests.Session.post')
 def test_async_execution_returns_task_id(mock_post):
     """Test async execution returns AsyncExecutionResult."""
     mock_response = Mock()
@@ -110,7 +110,7 @@ def test_async_execution_returns_task_id(mock_post):
     mock_response.headers.get.return_value = None
     mock_post.return_value = mock_response
 
-    client = SimStudioClient(api_key="test-api-key")
+    client = NocoBuilderClient(api_key="test-api-key")
     result = client.execute_workflow(
         "workflow-id",
         {"message": "Hello"},
@@ -126,7 +126,7 @@ def test_async_execution_returns_task_id(mock_post):
     assert call_args[1]["headers"]["X-Execution-Mode"] == "async"
 
 
-@patch('simstudio.requests.Session.post')
+@patch('nocobuilder.requests.Session.post')
 def test_sync_execution_returns_result(mock_post):
     """Test sync execution returns WorkflowExecutionResult."""
     mock_response = Mock()
@@ -140,7 +140,7 @@ def test_sync_execution_returns_result(mock_post):
     mock_response.headers.get.return_value = None
     mock_post.return_value = mock_response
 
-    client = SimStudioClient(api_key="test-api-key")
+    client = NocoBuilderClient(api_key="test-api-key")
     result = client.execute_workflow(
         "workflow-id",
         {"message": "Hello"},
@@ -152,7 +152,7 @@ def test_sync_execution_returns_result(mock_post):
     assert not hasattr(result, 'task_id')
 
 
-@patch('simstudio.requests.Session.post')
+@patch('nocobuilder.requests.Session.post')
 def test_async_header_not_set_when_false(mock_post):
     """Test X-Execution-Mode header is not set when async_execution is None."""
     mock_response = Mock()
@@ -162,14 +162,14 @@ def test_async_header_not_set_when_false(mock_post):
     mock_response.headers.get.return_value = None
     mock_post.return_value = mock_response
 
-    client = SimStudioClient(api_key="test-api-key")
+    client = NocoBuilderClient(api_key="test-api-key")
     client.execute_workflow("workflow-id", {"message": "Hello"})
 
     call_args = mock_post.call_args
     assert "X-Execution-Mode" not in call_args[1]["headers"]
 
 
-@patch('simstudio.requests.Session.get')
+@patch('nocobuilder.requests.Session.get')
 def test_get_job_status_success(mock_get):
     """Test getting job status."""
     mock_response = Mock()
@@ -188,16 +188,16 @@ def test_get_job_status_success(mock_get):
     mock_response.headers.get.return_value = None
     mock_get.return_value = mock_response
 
-    client = SimStudioClient(api_key="test-api-key", base_url="https://test.sim.ai")
+    client = NocoBuilderClient(api_key="test-api-key", base_url="https://test.nocobuilder.cloud")
     result = client.get_job_status("task-123")
 
     assert result["taskId"] == "task-123"
     assert result["status"] == "completed"
     assert result["output"]["result"] == "done"
-    mock_get.assert_called_once_with("https://test.sim.ai/api/jobs/task-123")
+    mock_get.assert_called_once_with("https://test.nocobuilder.cloud/api/jobs/task-123")
 
 
-@patch('simstudio.requests.Session.get')
+@patch('nocobuilder.requests.Session.get')
 def test_get_job_status_not_found(mock_get):
     """Test job not found error."""
     mock_response = Mock()
@@ -211,15 +211,15 @@ def test_get_job_status_not_found(mock_get):
     mock_response.headers.get.return_value = None
     mock_get.return_value = mock_response
 
-    client = SimStudioClient(api_key="test-api-key")
+    client = NocoBuilderClient(api_key="test-api-key")
 
-    with pytest.raises(SimStudioError) as exc_info:
+    with pytest.raises(NocoBuilderError) as exc_info:
         client.get_job_status("invalid-task")
     assert "Job not found" in str(exc_info.value)
 
 
-@patch('simstudio.requests.Session.post')
-@patch('simstudio.time.sleep')
+@patch('nocobuilder.requests.Session.post')
+@patch('nocobuilder.time.sleep')
 def test_execute_with_retry_success_first_attempt(mock_sleep, mock_post):
     """Test retry succeeds on first attempt."""
     mock_response = Mock()
@@ -232,7 +232,7 @@ def test_execute_with_retry_success_first_attempt(mock_sleep, mock_post):
     mock_response.headers.get.return_value = None
     mock_post.return_value = mock_response
 
-    client = SimStudioClient(api_key="test-api-key")
+    client = NocoBuilderClient(api_key="test-api-key")
     result = client.execute_with_retry("workflow-id", {"message": "test"})
 
     assert result.success is True
@@ -240,8 +240,8 @@ def test_execute_with_retry_success_first_attempt(mock_sleep, mock_post):
     assert mock_sleep.call_count == 0
 
 
-@patch('simstudio.requests.Session.post')
-@patch('simstudio.time.sleep')
+@patch('nocobuilder.requests.Session.post')
+@patch('nocobuilder.time.sleep')
 def test_execute_with_retry_retries_on_rate_limit(mock_sleep, mock_post):
     """Test retry retries on rate limit error."""
     rate_limit_response = Mock()
@@ -270,7 +270,7 @@ def test_execute_with_retry_retries_on_rate_limit(mock_sleep, mock_post):
 
     mock_post.side_effect = [rate_limit_response, success_response]
 
-    client = SimStudioClient(api_key="test-api-key")
+    client = NocoBuilderClient(api_key="test-api-key")
     result = client.execute_with_retry(
         "workflow-id",
         {"message": "test"},
@@ -283,8 +283,8 @@ def test_execute_with_retry_retries_on_rate_limit(mock_sleep, mock_post):
     assert mock_sleep.call_count == 1
 
 
-@patch('simstudio.requests.Session.post')
-@patch('simstudio.time.sleep')
+@patch('nocobuilder.requests.Session.post')
+@patch('nocobuilder.time.sleep')
 def test_execute_with_retry_max_retries_exceeded(mock_sleep, mock_post):
     """Test retry throws after max retries."""
     mock_response = Mock()
@@ -297,9 +297,9 @@ def test_execute_with_retry_max_retries_exceeded(mock_sleep, mock_post):
     mock_response.headers.get.side_effect = lambda h: '1' if h == 'retry-after' else None
     mock_post.return_value = mock_response
 
-    client = SimStudioClient(api_key="test-api-key")
+    client = NocoBuilderClient(api_key="test-api-key")
 
-    with pytest.raises(SimStudioError) as exc_info:
+    with pytest.raises(NocoBuilderError) as exc_info:
         client.execute_with_retry(
             "workflow-id",
             {"message": "test"},
@@ -311,7 +311,7 @@ def test_execute_with_retry_max_retries_exceeded(mock_sleep, mock_post):
     assert mock_post.call_count == 3  # Initial + 2 retries
 
 
-@patch('simstudio.requests.Session.post')
+@patch('nocobuilder.requests.Session.post')
 def test_execute_with_retry_no_retry_on_other_errors(mock_post):
     """Test retry does not retry on non-rate-limit errors."""
     mock_response = Mock()
@@ -325,9 +325,9 @@ def test_execute_with_retry_no_retry_on_other_errors(mock_post):
     mock_response.headers.get.return_value = None
     mock_post.return_value = mock_response
 
-    client = SimStudioClient(api_key="test-api-key")
+    client = NocoBuilderClient(api_key="test-api-key")
 
-    with pytest.raises(SimStudioError) as exc_info:
+    with pytest.raises(NocoBuilderError) as exc_info:
         client.execute_with_retry("workflow-id", {"message": "test"})
 
     assert "Server error" in str(exc_info.value)
@@ -336,12 +336,12 @@ def test_execute_with_retry_no_retry_on_other_errors(mock_post):
 
 def test_get_rate_limit_info_returns_none_initially():
     """Test rate limit info is None before any API calls."""
-    client = SimStudioClient(api_key="test-api-key")
+    client = NocoBuilderClient(api_key="test-api-key")
     info = client.get_rate_limit_info()
     assert info is None
 
 
-@patch('simstudio.requests.Session.post')
+@patch('nocobuilder.requests.Session.post')
 def test_get_rate_limit_info_after_api_call(mock_post):
     """Test rate limit info is populated after API call."""
     mock_response = Mock()
@@ -355,7 +355,7 @@ def test_get_rate_limit_info_after_api_call(mock_post):
     }.get(h)
     mock_post.return_value = mock_response
 
-    client = SimStudioClient(api_key="test-api-key")
+    client = NocoBuilderClient(api_key="test-api-key")
     client.execute_workflow("workflow-id", {})
 
     info = client.get_rate_limit_info()
@@ -365,7 +365,7 @@ def test_get_rate_limit_info_after_api_call(mock_post):
     assert info.reset == 1704067200
 
 
-@patch('simstudio.requests.Session.get')
+@patch('nocobuilder.requests.Session.get')
 def test_get_usage_limits_success(mock_get):
     """Test getting usage limits."""
     mock_response = Mock()
@@ -396,7 +396,7 @@ def test_get_usage_limits_success(mock_get):
     mock_response.headers.get.return_value = None
     mock_get.return_value = mock_response
 
-    client = SimStudioClient(api_key="test-api-key", base_url="https://test.sim.ai")
+    client = NocoBuilderClient(api_key="test-api-key", base_url="https://test.nocobuilder.cloud")
     result = client.get_usage_limits()
 
     assert result.success is True
@@ -404,10 +404,10 @@ def test_get_usage_limits_success(mock_get):
     assert result.rate_limit["async"]["limit"] == 50
     assert result.usage["currentPeriodCost"] == 1.23
     assert result.usage["plan"] == "pro"
-    mock_get.assert_called_once_with("https://test.sim.ai/api/users/me/usage-limits")
+    mock_get.assert_called_once_with("https://test.nocobuilder.cloud/api/users/me/usage-limits")
 
 
-@patch('simstudio.requests.Session.get')
+@patch('nocobuilder.requests.Session.get')
 def test_get_usage_limits_unauthorized(mock_get):
     """Test usage limits with invalid API key."""
     mock_response = Mock()
@@ -421,14 +421,14 @@ def test_get_usage_limits_unauthorized(mock_get):
     mock_response.headers.get.return_value = None
     mock_get.return_value = mock_response
 
-    client = SimStudioClient(api_key="invalid-key")
+    client = NocoBuilderClient(api_key="invalid-key")
 
-    with pytest.raises(SimStudioError) as exc_info:
+    with pytest.raises(NocoBuilderError) as exc_info:
         client.get_usage_limits()
     assert "Invalid API key" in str(exc_info.value)
 
 
-@patch('simstudio.requests.Session.post')
+@patch('nocobuilder.requests.Session.post')
 def test_execute_workflow_with_stream_and_selected_outputs(mock_post):
     """Test execution with stream and selectedOutputs parameters."""
     mock_response = Mock()
@@ -438,7 +438,7 @@ def test_execute_workflow_with_stream_and_selected_outputs(mock_post):
     mock_response.headers.get.return_value = None
     mock_post.return_value = mock_response
 
-    client = SimStudioClient(api_key="test-api-key")
+    client = NocoBuilderClient(api_key="test-api-key")
     client.execute_workflow(
         "workflow-id",
         {"message": "test"},
@@ -455,7 +455,7 @@ def test_execute_workflow_with_stream_and_selected_outputs(mock_post):
 
 
 # Tests for primitive and list inputs
-@patch('simstudio.requests.Session.post')
+@patch('nocobuilder.requests.Session.post')
 def test_execute_workflow_with_string_input(mock_post):
     """Test execution with primitive string input wraps in input field."""
     mock_response = Mock()
@@ -465,7 +465,7 @@ def test_execute_workflow_with_string_input(mock_post):
     mock_response.headers.get.return_value = None
     mock_post.return_value = mock_response
 
-    client = SimStudioClient(api_key="test-api-key")
+    client = NocoBuilderClient(api_key="test-api-key")
     client.execute_workflow("workflow-id", "NVDA")
 
     call_args = mock_post.call_args
@@ -475,7 +475,7 @@ def test_execute_workflow_with_string_input(mock_post):
     assert "0" not in request_body  # Should not spread string characters
 
 
-@patch('simstudio.requests.Session.post')
+@patch('nocobuilder.requests.Session.post')
 def test_execute_workflow_with_number_input(mock_post):
     """Test execution with primitive number input wraps in input field."""
     mock_response = Mock()
@@ -485,7 +485,7 @@ def test_execute_workflow_with_number_input(mock_post):
     mock_response.headers.get.return_value = None
     mock_post.return_value = mock_response
 
-    client = SimStudioClient(api_key="test-api-key")
+    client = NocoBuilderClient(api_key="test-api-key")
     client.execute_workflow("workflow-id", 42)
 
     call_args = mock_post.call_args
@@ -494,7 +494,7 @@ def test_execute_workflow_with_number_input(mock_post):
     assert request_body["input"] == 42
 
 
-@patch('simstudio.requests.Session.post')
+@patch('nocobuilder.requests.Session.post')
 def test_execute_workflow_with_list_input(mock_post):
     """Test execution with list input wraps in input field."""
     mock_response = Mock()
@@ -504,7 +504,7 @@ def test_execute_workflow_with_list_input(mock_post):
     mock_response.headers.get.return_value = None
     mock_post.return_value = mock_response
 
-    client = SimStudioClient(api_key="test-api-key")
+    client = NocoBuilderClient(api_key="test-api-key")
     client.execute_workflow("workflow-id", ["NVDA", "AAPL", "GOOG"])
 
     call_args = mock_post.call_args
@@ -514,7 +514,7 @@ def test_execute_workflow_with_list_input(mock_post):
     assert "0" not in request_body  # Should not spread list
 
 
-@patch('simstudio.requests.Session.post')
+@patch('nocobuilder.requests.Session.post')
 def test_execute_workflow_with_dict_input_spreads_at_root(mock_post):
     """Test execution with dict input spreads at root level."""
     mock_response = Mock()
@@ -524,7 +524,7 @@ def test_execute_workflow_with_dict_input_spreads_at_root(mock_post):
     mock_response.headers.get.return_value = None
     mock_post.return_value = mock_response
 
-    client = SimStudioClient(api_key="test-api-key")
+    client = NocoBuilderClient(api_key="test-api-key")
     client.execute_workflow("workflow-id", {"ticker": "NVDA", "quantity": 100})
 
     call_args = mock_post.call_args

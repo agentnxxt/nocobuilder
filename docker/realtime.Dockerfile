@@ -12,7 +12,7 @@ WORKDIR /app
 
 COPY package.json bun.lock turbo.json ./
 RUN mkdir -p apps packages/db packages/testing packages/logger packages/tsconfig
-COPY apps/sim/package.json ./apps/sim/package.json
+COPY apps/nocobuilder/package.json ./apps/nocobuilder/package.json
 COPY packages/db/package.json ./packages/db/package.json
 COPY packages/testing/package.json ./packages/testing/package.json
 COPY packages/logger/package.json ./packages/logger/package.json
@@ -34,13 +34,13 @@ COPY --from=deps /app/node_modules ./node_modules
 
 # Copy package configuration files (needed for build)
 COPY package.json bun.lock turbo.json ./
-COPY apps/sim/package.json ./apps/sim/package.json
+COPY apps/nocobuilder/package.json ./apps/nocobuilder/package.json
 COPY packages/db/package.json ./packages/db/package.json
 COPY packages/testing/package.json ./packages/testing/package.json
 COPY packages/logger/package.json ./packages/logger/package.json
 
 # Copy source code (changes most frequently - placed last to maximize cache hits)
-COPY apps/sim ./apps/sim
+COPY apps/nocobuilder ./apps/nocobuilder
 COPY packages ./packages
 
 # ========================================
@@ -68,7 +68,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/packages/db ./packages/db
 COPY --from=builder --chown=nextjs:nodejs /app/packages/logger ./packages/logger
 
 # Copy sim app (changes most frequently - placed last)
-COPY --from=builder --chown=nextjs:nodejs /app/apps/sim ./apps/sim
+COPY --from=builder --chown=nextjs:nodejs /app/apps/nocobuilder ./apps/nocobuilder
 
 # Switch to non-root user
 USER nextjs
@@ -80,4 +80,4 @@ ENV PORT=3002 \
     HOSTNAME="0.0.0.0"
 
 # Run the socket server directly
-CMD ["bun", "apps/sim/socket/index.ts"]
+CMD ["bun", "apps/nocobuilder/socket/index.ts"]

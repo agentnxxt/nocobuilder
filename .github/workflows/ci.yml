@@ -60,13 +60,13 @@ jobs:
       matrix:
         include:
           - dockerfile: ./docker/app.Dockerfile
-            ghcr_image: ghcr.io/simstudioai/simstudio
+            ghcr_image: ghcr.io/nocobuilder/nocobuilder
             ecr_repo_secret: ECR_APP
           - dockerfile: ./docker/db.Dockerfile
-            ghcr_image: ghcr.io/simstudioai/migrations
+            ghcr_image: ghcr.io/nocobuilder/migrations
             ecr_repo_secret: ECR_MIGRATIONS
           - dockerfile: ./docker/realtime.Dockerfile
-            ghcr_image: ghcr.io/simstudioai/realtime
+            ghcr_image: ghcr.io/nocobuilder/realtime
             ecr_repo_secret: ECR_REALTIME
     steps:
       - name: Checkout code
@@ -159,11 +159,11 @@ jobs:
       matrix:
         include:
           - dockerfile: ./docker/app.Dockerfile
-            image: ghcr.io/simstudioai/simstudio
+            image: ghcr.io/nocobuilder/nocobuilder
           - dockerfile: ./docker/db.Dockerfile
-            image: ghcr.io/simstudioai/migrations
+            image: ghcr.io/nocobuilder/migrations
           - dockerfile: ./docker/realtime.Dockerfile
-            image: ghcr.io/simstudioai/realtime
+            image: ghcr.io/nocobuilder/realtime
 
     steps:
       - name: Checkout code
@@ -216,9 +216,9 @@ jobs:
     strategy:
       matrix:
         include:
-          - image: ghcr.io/simstudioai/simstudio
-          - image: ghcr.io/simstudioai/migrations
-          - image: ghcr.io/simstudioai/realtime
+          - image: ghcr.io/nocobuilder/nocobuilder
+          - image: ghcr.io/nocobuilder/migrations
+          - image: ghcr.io/nocobuilder/realtime
 
     steps:
       - name: Login to GHCR
@@ -271,8 +271,8 @@ jobs:
           filters: |
             docs:
               - 'apps/docs/content/docs/en/**'
-              - 'apps/sim/scripts/process-docs.ts'
-              - 'apps/sim/lib/chunkers/**'
+              - 'apps/nocobuilder/scripts/process-docs.ts'
+              - 'apps/nocobuilder/lib/chunkers/**'
 
   # Process docs embeddings (only when docs change, after ECR images are pushed)
   process-docs:

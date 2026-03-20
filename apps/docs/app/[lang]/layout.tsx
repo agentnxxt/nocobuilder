@@ -11,7 +11,7 @@ import {
 } from '@/components/docs-layout/sidebar-components'
 import { Navbar } from '@/components/navbar/navbar'
 import { AnimatedBlocks } from '@/components/ui/animated-blocks'
-import { SimLogoFull } from '@/components/ui/sim-logo'
+import { SimLogoFull } from '@/components/ui/nocobuilder-logo'
 import { i18n } from '@/lib/i18n'
 import { source } from '@/lib/source'
 import '../global.css'
@@ -68,14 +68,14 @@ export default async function Layout({ children, params }: LayoutProps) {
     name: 'Sim Documentation',
     description:
       'Documentation for Sim — the open-source platform to build AI agents and run your agentic workforce. Connect 1,000+ integrations and LLMs to deploy and orchestrate agentic workflows.',
-    url: 'https://docs.sim.ai',
+    url: 'https://docs.nocobuilder.cloud',
     publisher: {
       '@type': 'Organization',
       name: 'Sim',
-      url: 'https://sim.ai',
+      url: 'https://nocobuilder.cloud',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://docs.sim.ai/static/logo.png',
+        url: 'https://docs.nocobuilder.cloud/static/logo.png',
       },
     },
     inLanguage: lang,
@@ -83,7 +83,7 @@ export default async function Layout({ children, params }: LayoutProps) {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: 'https://docs.sim.ai/api/search?q={search_term_string}',
+        urlTemplate: 'https://docs.nocobuilder.cloud/api/search?q={search_term_string}',
       },
       'query-input': 'required name=search_term_string',
     },

@@ -21,21 +21,21 @@ Installieren Sie das SDK mit Ihrem bevorzugten Paketmanager:
   <Tab value="npm">
 
     ```bash
-    npm install simstudio-ts-sdk
+    npm install nocobuilder-ts-sdk
     ```
 
   </Tab>
   <Tab value="yarn">
 
     ```bash
-    yarn add simstudio-ts-sdk
+    yarn add nocobuilder-ts-sdk
     ```
 
   </Tab>
   <Tab value="bun">
 
     ```bash
-    bun add simstudio-ts-sdk
+    bun add nocobuilder-ts-sdk
     ```
 
   </Tab>
@@ -46,12 +46,12 @@ Installieren Sie das SDK mit Ihrem bevorzugten Paketmanager:
 Hier ist ein einfaches Beispiel für den Einstieg:
 
 ```typescript
-import { SimStudioClient } from 'simstudio-ts-sdk';
+import { NocoBuilderClient } from 'nocobuilder-ts-sdk';
 
 // Initialize the client
-const client = new SimStudioClient({
+const client = new NocoBuilderClient({
   apiKey: 'your-api-key-here',
-  baseUrl: 'https://sim.ai' // optional, defaults to https://sim.ai
+  baseUrl: 'https://nocobuilder.cloud' // optional, defaults to https://nocobuilder.cloud
 });
 
 // Execute a workflow
@@ -65,17 +65,17 @@ try {
 
 ## API-Referenz
 
-### SimStudioClient
+### NocoBuilderClient
 
 #### Konstruktor
 
 ```typescript
-new SimStudioClient(config: SimStudioConfig)
+new NocoBuilderClient(config: NocoBuilderConfig)
 ```
 
 **Konfiguration:**
 - `config.apiKey` (string): Ihr Sim API-Schlüssel
-- `config.baseUrl` (string, optional): Basis-URL für die Sim API (standardmäßig `https://sim.ai`)
+- `config.baseUrl` (string, optional): Basis-URL für die Sim API (standardmäßig `https://nocobuilder.cloud`)
 
 #### Methoden
 
@@ -344,10 +344,10 @@ interface UsageLimits {
 }
 ```
 
-### SimStudioError
+### NocoBuilderError
 
 ```typescript
-class SimStudioError extends Error {
+class NocoBuilderError extends Error {
   code?: string;
   status?: number;
 }
@@ -366,7 +366,7 @@ class SimStudioError extends Error {
 
 <Steps>
   <Step title="Client initialisieren">
-    Richten Sie den SimStudioClient mit Ihrem API-Schlüssel ein.
+    Richten Sie den NocoBuilderClient mit Ihrem API-Schlüssel ein.
   </Step>
   <Step title="Workflow validieren">
     Prüfen Sie, ob der Workflow bereitgestellt und für die Ausführung bereit ist.
@@ -380,9 +380,9 @@ class SimStudioError extends Error {
 </Steps>
 
 ```typescript
-import { SimStudioClient } from 'simstudio-ts-sdk';
+import { NocoBuilderClient } from 'nocobuilder-ts-sdk';
 
-const client = new SimStudioClient({
+const client = new NocoBuilderClient({
   apiKey: process.env.SIM_API_KEY!
 });
 
@@ -421,9 +421,9 @@ runWorkflow();
 Behandeln Sie verschiedene Fehlertypen, die während der Workflow-Ausführung auftreten können:
 
 ```typescript
-import { SimStudioClient, SimStudioError } from 'simstudio-ts-sdk';
+import { NocoBuilderClient, NocoBuilderError } from 'nocobuilder-ts-sdk';
 
-const client = new SimStudioClient({
+const client = new NocoBuilderClient({
   apiKey: process.env.SIM_API_KEY!
 });
 
@@ -432,7 +432,7 @@ async function executeWithErrorHandling() {
     const result = await client.executeWorkflow('workflow-id');
     return result;
   } catch (error) {
-    if (error instanceof SimStudioError) {
+    if (error instanceof NocoBuilderError) {
       switch (error.code) {
         case 'UNAUTHORIZED':
           console.error('Invalid API key');
@@ -465,7 +465,7 @@ Konfigurieren Sie den Client mit Umgebungsvariablen:
   <Tab value="Development">
 
     ```typescript
-    import { SimStudioClient } from 'simstudio-ts-sdk';
+    import { NocoBuilderClient } from 'nocobuilder-ts-sdk';
 
     // Development configuration
     const apiKey = process.env.SIM_API_KEY;
@@ -473,7 +473,7 @@ Konfigurieren Sie den Client mit Umgebungsvariablen:
       throw new Error('SIM_API_KEY environment variable is required');
     }
 
-    const client = new SimStudioClient({
+    const client = new NocoBuilderClient({
       apiKey,
       baseUrl: process.env.SIM_BASE_URL // optional
     });
@@ -483,7 +483,7 @@ Konfigurieren Sie den Client mit Umgebungsvariablen:
   <Tab value="Production">
 
     ```typescript
-    import { SimStudioClient } from 'simstudio-ts-sdk';
+    import { NocoBuilderClient } from 'nocobuilder-ts-sdk';
 
     // Production configuration with validation
     const apiKey = process.env.SIM_API_KEY;
@@ -491,9 +491,9 @@ Konfigurieren Sie den Client mit Umgebungsvariablen:
       throw new Error('SIM_API_KEY environment variable is required');
     }
 
-    const client = new SimStudioClient({
+    const client = new NocoBuilderClient({
       apiKey,
-      baseUrl: process.env.SIM_BASE_URL || 'https://sim.ai'
+      baseUrl: process.env.SIM_BASE_URL || 'https://nocobuilder.cloud'
     });
     ```
 
@@ -506,10 +506,10 @@ Integration mit einem Express.js-Server:
 
 ```typescript
 import express from 'express';
-import { SimStudioClient } from 'simstudio-ts-sdk';
+import { NocoBuilderClient } from 'nocobuilder-ts-sdk';
 
 const app = express();
-const client = new SimStudioClient({
+const client = new NocoBuilderClient({
   apiKey: process.env.SIM_API_KEY!
 });
 
@@ -549,9 +549,9 @@ Verwendung mit Next.js API-Routen:
 ```typescript
 // pages/api/workflow.ts or app/api/workflow/route.ts
 import { NextApiRequest, NextApiResponse } from 'next';
-import { SimStudioClient } from 'simstudio-ts-sdk';
+import { NocoBuilderClient } from 'nocobuilder-ts-sdk';
 
-const client = new SimStudioClient({
+const client = new NocoBuilderClient({
   apiKey: process.env.SIM_API_KEY!
 });
 
@@ -586,12 +586,12 @@ export default async function handler(
 Verwendung im Browser (mit korrekter CORS-Konfiguration):
 
 ```typescript
-import { SimStudioClient } from 'simstudio-ts-sdk';
+import { NocoBuilderClient } from 'nocobuilder-ts-sdk';
 
 // Note: In production, use a proxy server to avoid exposing API keys
-const client = new SimStudioClient({
+const client = new NocoBuilderClient({
   apiKey: 'your-public-api-key', // Use with caution in browser
-  baseUrl: 'https://sim.ai'
+  baseUrl: 'https://nocobuilder.cloud'
 });
 
 async function executeClientSideWorkflow() {
@@ -643,9 +643,9 @@ Alternativ können Sie Dateien manuell im URL-Format bereitstellen:
   <Tab value="Browser">
 
     ```typescript
-    import { SimStudioClient } from 'simstudio-ts-sdk';
+    import { NocoBuilderClient } from 'nocobuilder-ts-sdk';
 
-    const client = new SimStudioClient({
+    const client = new NocoBuilderClient({
       apiKey: process.env.NEXT_PUBLIC_SIM_API_KEY!
     });
 
@@ -670,10 +670,10 @@ Alternativ können Sie Dateien manuell im URL-Format bereitstellen:
   <Tab value="Node.js">
 
     ```typescript
-    import { SimStudioClient } from 'simstudio-ts-sdk';
+    import { NocoBuilderClient } from 'nocobuilder-ts-sdk';
     import fs from 'fs';
 
-    const client = new SimStudioClient({
+    const client = new NocoBuilderClient({
       apiKey: process.env.SIM_API_KEY!
     });
 
@@ -705,9 +705,9 @@ Erstellen Sie einen benutzerdefinierten React-Hook für die Workflow-Ausführung
 
 ```typescript
 import { useState, useCallback } from 'react';
-import { SimStudioClient, WorkflowExecutionResult } from 'simstudio-ts-sdk';
+import { NocoBuilderClient, WorkflowExecutionResult } from 'nocobuilder-ts-sdk';
 
-const client = new SimStudioClient({
+const client = new NocoBuilderClient({
   apiKey: process.env.SIM_API_KEY!
 });
 
@@ -782,9 +782,9 @@ function WorkflowComponent() {
 Führen Sie Workflows asynchron für lang laufende Aufgaben aus:
 
 ```typescript
-import { SimStudioClient, AsyncExecutionResult } from 'simstudio-ts-sdk';
+import { NocoBuilderClient, AsyncExecutionResult } from 'nocobuilder-ts-sdk';
 
-const client = new SimStudioClient({
+const client = new NocoBuilderClient({
   apiKey: process.env.SIM_API_KEY!
 });
 
@@ -831,9 +831,9 @@ executeAsync();
 Automatische Behandlung von Rate-Limits mit exponentiellem Backoff:
 
 ```typescript
-import { SimStudioClient, SimStudioError } from 'simstudio-ts-sdk';
+import { NocoBuilderClient, NocoBuilderError } from 'nocobuilder-ts-sdk';
 
-const client = new SimStudioClient({
+const client = new NocoBuilderClient({
   apiKey: process.env.SIM_API_KEY!
 });
 
@@ -851,7 +851,7 @@ async function executeWithRetryHandling() {
 
     console.log('Success:', result);
   } catch (error) {
-    if (error instanceof SimStudioError && error.code === 'RATE_LIMIT_EXCEEDED') {
+    if (error instanceof NocoBuilderError && error.code === 'RATE_LIMIT_EXCEEDED') {
       console.error('Rate limit exceeded after all retries');
 
       // Check rate limit info
@@ -869,9 +869,9 @@ async function executeWithRetryHandling() {
 Überwachen Sie Ihre Kontonutzung und -limits:
 
 ```typescript
-import { SimStudioClient } from 'simstudio-ts-sdk';
+import { NocoBuilderClient } from 'nocobuilder-ts-sdk';
 
-const client = new SimStudioClient({
+const client = new NocoBuilderClient({
   apiKey: process.env.SIM_API_KEY!
 });
 
@@ -916,9 +916,9 @@ checkUsage();
 Führen Sie Workflows mit Echtzeit-Streaming-Antworten aus:
 
 ```typescript
-import { SimStudioClient } from 'simstudio-ts-sdk';
+import { NocoBuilderClient } from 'nocobuilder-ts-sdk';
 
-const client = new SimStudioClient({
+const client = new NocoBuilderClient({
   apiKey: process.env.SIM_API_KEY!
 });
 
@@ -965,7 +965,7 @@ function StreamingWorkflow() {
 
     // IMPORTANT: Make this API call from your backend server, not the browser
     // Never expose your API key in client-side code
-    const response = await fetch('https://sim.ai/api/workflows/WORKFLOW_ID/execute', {
+    const response = await fetch('https://nocobuilder.cloud/api/workflows/WORKFLOW_ID/execute', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -1026,7 +1026,7 @@ function StreamingWorkflow() {
 
 <Steps>
   <Step title="Bei Sim anmelden">
-    Navigieren Sie zu [Sim](https://sim.ai) und melden Sie sich bei Ihrem Konto an.
+    Navigieren Sie zu [Sim](https://nocobuilder.cloud) und melden Sie sich bei Ihrem Konto an.
   </Step>
   <Step title="Öffnen Sie Ihren Workflow">
     Navigieren Sie zu dem Workflow, den Sie programmatisch ausführen möchten.

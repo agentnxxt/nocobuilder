@@ -17,7 +17,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata = {
-  metadataBase: new URL('https://docs.sim.ai'),
+  metadataBase: new URL('https://docs.nocobuilder.cloud'),
   title: {
     default: 'Sim Documentation — Build AI Agents & Run Your Agentic Workforce',
     template: '%s',
@@ -44,7 +44,7 @@ export const metadata = {
     'intelligent automation',
     'AI tools',
   ],
-  authors: [{ name: 'Sim Team', url: 'https://sim.ai' }],
+  authors: [{ name: 'Sim Team', url: 'https://nocobuilder.cloud' }],
   creator: 'Sim',
   publisher: 'Sim',
   category: 'Developer Tools',
@@ -78,14 +78,14 @@ export const metadata = {
     type: 'website',
     locale: 'en_US',
     alternateLocale: ['es_ES', 'fr_FR', 'de_DE', 'ja_JP', 'zh_CN'],
-    url: 'https://docs.sim.ai',
+    url: 'https://docs.nocobuilder.cloud',
     siteName: 'Sim Documentation',
     title: 'Sim Documentation — Build AI Agents & Run Your Agentic Workforce',
     description:
       'Documentation for Sim — the open-source platform to build AI agents and run your agentic workforce. Connect 1,000+ integrations and LLMs to deploy and orchestrate agentic workflows.',
     images: [
       {
-        url: 'https://docs.sim.ai/api/og?title=Sim%20Documentation',
+        url: 'https://docs.nocobuilder.cloud/api/og?title=Sim%20Documentation',
         width: 1200,
         height: 630,
         alt: 'Sim Documentation',
@@ -99,7 +99,7 @@ export const metadata = {
       'Documentation for Sim — the open-source platform to build AI agents and run your agentic workforce. Connect 1,000+ integrations and LLMs to deploy and orchestrate agentic workflows.',
     creator: '@simdotai',
     site: '@simdotai',
-    images: ['https://docs.sim.ai/api/og?title=Sim%20Documentation'],
+    images: ['https://docs.nocobuilder.cloud/api/og?title=Sim%20Documentation'],
   },
   robots: {
     index: true,
@@ -113,15 +113,15 @@ export const metadata = {
     },
   },
   alternates: {
-    canonical: 'https://docs.sim.ai',
+    canonical: 'https://docs.nocobuilder.cloud',
     languages: {
-      'x-default': 'https://docs.sim.ai',
-      en: 'https://docs.sim.ai',
-      es: 'https://docs.sim.ai/es',
-      fr: 'https://docs.sim.ai/fr',
-      de: 'https://docs.sim.ai/de',
-      ja: 'https://docs.sim.ai/ja',
-      zh: 'https://docs.sim.ai/zh',
+      'x-default': 'https://docs.nocobuilder.cloud',
+      en: 'https://docs.nocobuilder.cloud',
+      es: 'https://docs.nocobuilder.cloud/es',
+      fr: 'https://docs.nocobuilder.cloud/fr',
+      de: 'https://docs.nocobuilder.cloud/de',
+      ja: 'https://docs.nocobuilder.cloud/ja',
+      zh: 'https://docs.nocobuilder.cloud/zh',
     },
   },
 }

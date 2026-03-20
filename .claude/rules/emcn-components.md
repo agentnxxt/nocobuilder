@@ -1,6 +1,6 @@
 ---
 paths:
-  - "apps/sim/components/emcn/**"
+  - "apps/nocobuilder/components/emcn/**"
 ---
 
 # EMCN Components

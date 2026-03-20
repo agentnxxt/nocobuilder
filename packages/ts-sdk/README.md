@@ -1,26 +1,26 @@
 # Sim TypeScript SDK
 
-The official TypeScript/JavaScript SDK for [Sim](https://sim.ai), allowing you to execute workflows programmatically from your applications.
+The official TypeScript/JavaScript SDK for [Sim](https://nocobuilder.cloud), allowing you to execute workflows programmatically from your applications.
 
 ## Installation
 
 ```bash
-npm install simstudio-ts-sdk
+npm install nocobuilder-ts-sdk
 # or 
-yarn add simstudio-ts-sdk
+yarn add nocobuilder-ts-sdk
 # or
-bun add simstudio-ts-sdk
+bun add nocobuilder-ts-sdk
 ```
 
 ## Quick Start
 
 ```typescript
-import { SimStudioClient } from 'simstudio-ts-sdk';
+import { NocoBuilderClient } from 'nocobuilder-ts-sdk';
 
 // Initialize the client
-const client = new SimStudioClient({
+const client = new NocoBuilderClient({
   apiKey: 'your-api-key-here',
-  baseUrl: 'https://sim.ai' // optional, defaults to https://sim.ai
+  baseUrl: 'https://nocobuilder.cloud' // optional, defaults to https://nocobuilder.cloud
 });
 
 // Execute a workflow
@@ -34,16 +34,16 @@ try {
 
 ## API Reference
 
-### SimStudioClient
+### NocoBuilderClient
 
 #### Constructor
 
 ```typescript
-new SimStudioClient(config: SimStudioConfig)
+new NocoBuilderClient(config: NocoBuilderConfig)
 ```
 
 - `config.apiKey` (string): Your Sim API key
-- `config.baseUrl` (string, optional): Base URL for the Sim API (defaults to `https://sim.ai`)
+- `config.baseUrl` (string, optional): Base URL for the Sim API (defaults to `https://nocobuilder.cloud`)
 
 #### Methods
 
@@ -236,10 +236,10 @@ interface WorkflowStatus {
 }
 ```
 
-### SimStudioError
+### NocoBuilderError
 
 ```typescript
-class SimStudioError extends Error {
+class NocoBuilderError extends Error {
   code?: string;
   status?: number;
 }
@@ -325,9 +325,9 @@ interface RetryOptions {
 ### Basic Workflow Execution
 
 ```typescript
-import { SimStudioClient } from 'simstudio-ts-sdk';
+import { NocoBuilderClient } from 'nocobuilder-ts-sdk';
 
-const client = new SimStudioClient({
+const client = new NocoBuilderClient({
   apiKey: process.env.SIM_API_KEY!
 });
 
@@ -362,9 +362,9 @@ runWorkflow();
 ### Error Handling
 
 ```typescript
-import { SimStudioClient, SimStudioError } from 'simstudio-ts-sdk';
+import { NocoBuilderClient, NocoBuilderError } from 'nocobuilder-ts-sdk';
 
-const client = new SimStudioClient({
+const client = new NocoBuilderClient({
   apiKey: process.env.SIM_API_KEY!
 });
 
@@ -373,7 +373,7 @@ async function executeWithErrorHandling() {
     const result = await client.executeWorkflow('workflow-id');
     return result;
   } catch (error) {
-    if (error instanceof SimStudioError) {
+    if (error instanceof NocoBuilderError) {
       switch (error.code) {
         case 'UNAUTHORIZED':
           console.error('Invalid API key');
@@ -402,7 +402,7 @@ async function executeWithErrorHandling() {
 
 ```typescript
 // Using environment variables
-const client = new SimStudioClient({
+const client = new NocoBuilderClient({
   apiKey: process.env.SIM_API_KEY!,
   baseUrl: process.env.SIM_BASE_URL // optional
 });
@@ -433,10 +433,10 @@ Alternatively, you can manually provide files using the URL format:
 ```
 
 ```typescript
-import { SimStudioClient } from 'simstudio-ts-sdk';
+import { NocoBuilderClient } from 'nocobuilder-ts-sdk';
 import fs from 'fs';
 
-const client = new SimStudioClient({
+const client = new NocoBuilderClient({
   apiKey: process.env.SIM_API_KEY!
 });
 
@@ -464,7 +464,7 @@ const handleFileUpload = async (event: Event) => {
 
 ## Getting Your API Key
 
-1. Log in to your [Sim](https://sim.ai) account
+1. Log in to your [Sim](https://nocobuilder.cloud) account
 2. Navigate to your workflow
 3. Click on "Deploy" to deploy your workflow
 4. Select or create an API key during the deployment process

@@ -28,7 +28,7 @@ Die Ressourcenanforderungen werden durch Workflow-Ausführung (isolated-vm Sandb
 ## Schnellstart
 
 ```bash
-git clone https://github.com/simstudioai/sim.git && cd sim
+git clone https://github.com/nocobuilder/sim.git && cd sim
 docker compose -f docker-compose.prod.yml up -d
 ```
 
@@ -52,14 +52,14 @@ docker compose -f docker-compose.prod.yml up -d
 
 | Komponente | Port | Beschreibung |
 |-----------|------|-------------|
-| simstudio | 3000 | Hauptanwendung |
+| nocobuilder | 3000 | Hauptanwendung |
 | realtime | 3002 | WebSocket-Server |
 | db | 5432 | PostgreSQL mit pgvector |
 | migrations | - | Datenbank-Migrationen (werden einmal ausgeführt) |
 
 | Komponente | Port | Beschreibung |
 |-----------|------|-------------|
-| simstudio | 3000 | Hauptanwendung |
+| nocobuilder | 3000 | Hauptanwendung |
 | realtime | 3002 | WebSocket-Server |
 | db | 5432 | PostgreSQL mit pgvector |
 | migrations | - | Datenbankmigrationen (wird einmal ausgeführt) |

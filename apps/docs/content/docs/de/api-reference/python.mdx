@@ -18,7 +18,7 @@ Das offizielle Python SDK für Sim ermöglicht es Ihnen, Workflows programmatisc
 Installieren Sie das SDK mit pip:
 
 ```bash
-pip install simstudio-sdk
+pip install nocobuilder-sdk
 ```
 
 ## Schnellstart
@@ -26,12 +26,12 @@ pip install simstudio-sdk
 Hier ist ein einfaches Beispiel für den Einstieg:
 
 ```python
-from simstudio import SimStudioClient
+from nocobuilder import NocoBuilderClient
 
 # Initialize the client
-client = SimStudioClient(
+client = NocoBuilderClient(
     api_key="your-api-key-here",
-    base_url="https://sim.ai"  # optional, defaults to https://sim.ai
+    base_url="https://nocobuilder.cloud"  # optional, defaults to https://nocobuilder.cloud
 )
 
 # Execute a workflow
@@ -44,12 +44,12 @@ except Exception as error:
 
 ## API-Referenz
 
-### SimStudioClient
+### NocoBuilderClient
 
 #### Konstruktor
 
 ```python
-SimStudioClient(api_key: str, base_url: str = "https://sim.ai")
+NocoBuilderClient(api_key: str, base_url: str = "https://nocobuilder.cloud")
 ```
 
 **Parameter:**
@@ -308,10 +308,10 @@ class UsageLimits:
     usage: Dict[str, Any]
 ```
 
-### SimStudioError
+### NocoBuilderError
 
 ```python
-class SimStudioError(Exception):
+class NocoBuilderError(Exception):
     def __init__(self, message: str, code: Optional[str] = None, status: Optional[int] = None):
         super().__init__(message)
         self.code = code
@@ -331,7 +331,7 @@ class SimStudioError(Exception):
 
 <Steps>
   <Step title="Client initialisieren">
-    Richten Sie den SimStudioClient mit Ihrem API-Schlüssel ein.
+    Richten Sie den NocoBuilderClient mit Ihrem API-Schlüssel ein.
   </Step>
   <Step title="Workflow validieren">
     Prüfen Sie, ob der Workflow bereitgestellt und zur Ausführung bereit ist.
@@ -346,9 +346,9 @@ class SimStudioError(Exception):
 
 ```python
 import os
-from simstudio import SimStudioClient
+from nocobuilder import NocoBuilderClient
 
-client = SimStudioClient(api_key=os.getenv("SIM_API_KEY"))
+client = NocoBuilderClient(api_key=os.getenv("SIM_API_KEY"))
 
 def run_workflow():
     try:
@@ -383,16 +383,16 @@ run_workflow()
 Behandeln Sie verschiedene Fehlertypen, die während der Workflow-Ausführung auftreten können:
 
 ```python
-from simstudio import SimStudioClient, SimStudioError
+from nocobuilder import NocoBuilderClient, NocoBuilderError
 import os
 
-client = SimStudioClient(api_key=os.getenv("SIM_API_KEY"))
+client = NocoBuilderClient(api_key=os.getenv("SIM_API_KEY"))
 
 def execute_with_error_handling():
     try:
         result = client.execute_workflow("workflow-id")
         return result
-    except SimStudioError as error:
+    except NocoBuilderError as error:
         if error.code == "UNAUTHORIZED":
             print("Invalid API key")
         elif error.code == "TIMEOUT":
@@ -414,11 +414,11 @@ def execute_with_error_handling():
 Verwenden Sie den Client als Context-Manager, um die Ressourcenbereinigung automatisch zu handhaben:
 
 ```python
-from simstudio import SimStudioClient
+from nocobuilder import NocoBuilderClient
 import os
 
 # Using context manager to automatically close the session
-with SimStudioClient(api_key=os.getenv("SIM_API_KEY")) as client:
+with NocoBuilderClient(api_key=os.getenv("SIM_API_KEY")) as client:
     result = client.execute_workflow("workflow-id")
     print("Result:", result)
 # Session is automatically closed here
@@ -429,10 +429,10 @@ with SimStudioClient(api_key=os.getenv("SIM_API_KEY")) as client:
 Führen Sie mehrere Workflows effizient aus:
 
 ```python
-from simstudio import SimStudioClient
+from nocobuilder import NocoBuilderClient
 import os
 
-client = SimStudioClient(api_key=os.getenv("SIM_API_KEY"))   
+client = NocoBuilderClient(api_key=os.getenv("SIM_API_KEY"))   
 
 def execute_workflows_batch(workflow_data_pairs):
     """Execute multiple workflows with different input data."""
@@ -480,9 +480,9 @@ Führen Sie Workflows asynchron für langwierige Aufgaben aus:
 ```python
 import os
 import time
-from simstudio import SimStudioClient
+from nocobuilder import NocoBuilderClient
 
-client = SimStudioClient(api_key=os.getenv("SIM_API_KEY"))
+client = NocoBuilderClient(api_key=os.getenv("SIM_API_KEY"))
 
 def execute_async():
     try:
@@ -525,9 +525,9 @@ Behandeln Sie Ratenbegrenzungen automatisch mit exponentiellem Backoff:
 
 ```python
 import os
-from simstudio import SimStudioClient, SimStudioError
+from nocobuilder import NocoBuilderClient, NocoBuilderError
 
-client = SimStudioClient(api_key=os.getenv("SIM_API_KEY"))
+client = NocoBuilderClient(api_key=os.getenv("SIM_API_KEY"))
 
 def execute_with_retry_handling():
     try:
@@ -542,7 +542,7 @@ def execute_with_retry_handling():
         )
 
         print(f"Success: {result}")
-    except SimStudioError as error:
+    except NocoBuilderError as error:
         if error.code == "RATE_LIMIT_EXCEEDED":
             print("Rate limit exceeded after all retries")
 
@@ -562,9 +562,9 @@ execute_with_retry_handling()
 
 ```python
 import os
-from simstudio import SimStudioClient
+from nocobuilder import NocoBuilderClient
 
-client = SimStudioClient(api_key=os.getenv("SIM_API_KEY"))
+client = NocoBuilderClient(api_key=os.getenv("SIM_API_KEY"))
 
 def check_usage():
     try:
@@ -605,10 +605,10 @@ check_usage()
 Führen Sie Workflows mit Echtzeit-Streaming-Antworten aus:
 
 ```python
-from simstudio import SimStudioClient
+from nocobuilder import NocoBuilderClient
 import os
 
-client = SimStudioClient(api_key=os.getenv("SIM_API_KEY"))
+client = NocoBuilderClient(api_key=os.getenv("SIM_API_KEY"))
 
 def execute_with_streaming():
     """Execute workflow with streaming enabled."""
@@ -656,7 +656,7 @@ def stream_workflow():
 
     def generate():
         response = requests.post(
-            'https://sim.ai/api/workflows/WORKFLOW_ID/execute',
+            'https://nocobuilder.cloud/api/workflows/WORKFLOW_ID/execute',
             headers={
                 'Content-Type': 'application/json',
                 'X-API-Key': os.getenv('SIM_API_KEY')
@@ -706,12 +706,12 @@ Konfigurieren Sie den Client mit Umgebungsvariablen:
 
     ```python
     import os
-    from simstudio import SimStudioClient
+    from nocobuilder import NocoBuilderClient
 
     # Development configuration
-    client = SimStudioClient(
+    client = NocoBuilderClient(
         api_key=os.getenv("SIM_API_KEY")
-        base_url=os.getenv("SIM_BASE_URL", "https://sim.ai")
+        base_url=os.getenv("SIM_BASE_URL", "https://nocobuilder.cloud")
     )
     ```
 
@@ -720,16 +720,16 @@ Konfigurieren Sie den Client mit Umgebungsvariablen:
 
     ```python
     import os
-    from simstudio import SimStudioClient
+    from nocobuilder import NocoBuilderClient
 
     # Production configuration with error handling
     api_key = os.getenv("SIM_API_KEY")
     if not api_key:
         raise ValueError("SIM_API_KEY environment variable is required")
 
-    client = SimStudioClient(
+    client = NocoBuilderClient(
         api_key=api_key,
-        base_url=os.getenv("SIM_BASE_URL", "https://sim.ai")
+        base_url=os.getenv("SIM_BASE_URL", "https://nocobuilder.cloud")
     )
     ```
 
@@ -740,7 +740,7 @@ Konfigurieren Sie den Client mit Umgebungsvariablen:
 
 <Steps>
   <Step title="Bei Sim anmelden">
-    Navigieren Sie zu [Sim](https://sim.ai) und melden Sie sich in Ihrem Konto an.
+    Navigieren Sie zu [Sim](https://nocobuilder.cloud) und melden Sie sich in Ihrem Konto an.
   </Step>
   <Step title="Workflow öffnen">
     Navigieren Sie zu dem Workflow, den Sie programmatisch ausführen möchten.

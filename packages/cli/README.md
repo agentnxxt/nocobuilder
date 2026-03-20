@@ -1,13 +1,13 @@
 # Sim CLI
 
-Sim CLI allows you to run [Sim](https://sim.ai) using Docker with a single command.
+Sim CLI allows you to run [Sim](https://nocobuilder.cloud) using Docker with a single command.
 
 ## Installation
 
 To install the Sim CLI globally, use:
 
 ```bash
-npm install -g simstudio
+npm install -g nocobuilder
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ npm install -g simstudio
 To start Sim, simply run:
 
 ```bash
-simstudio
+nocobuilder
 ```
 
 ### Options

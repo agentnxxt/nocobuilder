@@ -10,7 +10,7 @@ import { Callout } from 'fumadocs-ui/components/callout'
 
 One-click deployment with automatic PostgreSQL provisioning.
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.com/new/template/sim-studio)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.com/new/template/nocobuilder)
 
 After deployment, add environment variables in Railway dashboard:
 - `BETTER_AUTH_SECRET`, `ENCRYPTION_KEY`, `INTERNAL_API_SECRET` (auto-generated)
@@ -60,11 +60,11 @@ docker --version
 ### Deploy Sim
 
 ```bash
-git clone https://github.com/simstudioai/sim.git && cd sim
+git clone https://github.com/nocobuilder/sim.git && cd sim
 
 # Create .env with secrets
 cat > .env << EOF
-DATABASE_URL=postgresql://postgres:postgres@db:5432/simstudio
+DATABASE_URL=postgresql://postgres:postgres@db:5432/nocobuilder
 BETTER_AUTH_SECRET=$(openssl rand -hex 32)
 ENCRYPTION_KEY=$(openssl rand -hex 32)
 INTERNAL_API_SECRET=$(openssl rand -hex 32)

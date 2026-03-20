@@ -17,7 +17,7 @@ import { FAQ } from '@/components/ui/faq'
 
 ```bash
 # Clone repo
-git clone https://github.com/simstudioai/sim.git && cd sim
+git clone https://github.com/nocobuilder/sim.git && cd sim
 
 # Generate secrets
 BETTER_AUTH_SECRET=$(openssl rand -hex 32)
@@ -29,7 +29,7 @@ helm install sim ./helm/sim \
   --set app.env.BETTER_AUTH_SECRET="$BETTER_AUTH_SECRET" \
   --set app.env.ENCRYPTION_KEY="$ENCRYPTION_KEY" \
   --set app.env.INTERNAL_API_SECRET="$INTERNAL_API_SECRET" \
-  --namespace simstudio --create-namespace
+  --namespace nocobuilder --create-namespace
 ```
 
 ## Cloud-Specific Values
@@ -43,7 +43,7 @@ helm install sim ./helm/sim \
   --set app.env.ENCRYPTION_KEY="$ENCRYPTION_KEY" \
   --set app.env.INTERNAL_API_SECRET="$INTERNAL_API_SECRET" \
   --set app.env.NEXT_PUBLIC_APP_URL="https://sim.yourdomain.com" \
-  --namespace simstudio --create-namespace
+  --namespace nocobuilder --create-namespace
 ```
   </Tab>
   <Tab value="Azure AKS">
@@ -54,7 +54,7 @@ helm install sim ./helm/sim \
   --set app.env.ENCRYPTION_KEY="$ENCRYPTION_KEY" \
   --set app.env.INTERNAL_API_SECRET="$INTERNAL_API_SECRET" \
   --set app.env.NEXT_PUBLIC_APP_URL="https://sim.yourdomain.com" \
-  --namespace simstudio --create-namespace
+  --namespace nocobuilder --create-namespace
 ```
   </Tab>
   <Tab value="GCP GKE">
@@ -65,7 +65,7 @@ helm install sim ./helm/sim \
   --set app.env.ENCRYPTION_KEY="$ENCRYPTION_KEY" \
   --set app.env.INTERNAL_API_SECRET="$INTERNAL_API_SECRET" \
   --set app.env.NEXT_PUBLIC_APP_URL="https://sim.yourdomain.com" \
-  --namespace simstudio --create-namespace
+  --namespace nocobuilder --create-namespace
 ```
   </Tab>
 </Tabs>
@@ -107,7 +107,7 @@ externalDatabase:
   port: 5432
   username: "postgres"
   password: "your-password"
-  database: "simstudio"
+  database: "nocobuilder"
   sslMode: "require"
 ```
 
@@ -115,16 +115,16 @@ externalDatabase:
 
 ```bash
 # Port forward for local access
-kubectl port-forward deployment/sim-sim-app 3000:3000 -n simstudio
+kubectl port-forward deployment/sim-sim-app 3000:3000 -n nocobuilder
 
 # View logs
-kubectl logs -l app.kubernetes.io/component=app -n simstudio --tail=100
+kubectl logs -l app.kubernetes.io/component=app -n nocobuilder --tail=100
 
 # Upgrade
-helm upgrade sim ./helm/sim --namespace simstudio
+helm upgrade sim ./helm/sim --namespace nocobuilder
 
 # Uninstall
-helm uninstall sim --namespace simstudio
+helm uninstall sim --namespace nocobuilder
 ```
 
 <FAQ items={[

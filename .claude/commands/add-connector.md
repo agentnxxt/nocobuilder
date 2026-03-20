@@ -17,7 +17,7 @@ When the user asks you to create a connector:
 
 ## Directory Structure
 
-Create files in `apps/sim/connectors/{service}/`:
+Create files in `apps/nocobuilder/connectors/{service}/`:
 ```
 connectors/{service}/
 ├── index.ts          # Barrel export
@@ -35,7 +35,7 @@ type ConnectorAuthConfig =
 ```
 
 ### OAuth mode
-For services with existing OAuth providers in `apps/sim/lib/oauth/types.ts`. The `provider` must match an `OAuthService`. The modal shows a credential picker and handles token refresh automatically.
+For services with existing OAuth providers in `apps/nocobuilder/lib/oauth/types.ts`. The `provider` must match an `OAuthService`. The modal shows a credential picker and handles token refresh automatically.
 
 ### API key mode
 For services that use API key / Bearer token auth. The modal shows a password input with the configured `label` and `placeholder`. The API key is encrypted at rest using AES-256-GCM and stored in a dedicated `encryptedApiKey` column on the connector record. The sync engine decrypts it automatically — connectors receive the raw access token in `listDocuments`, `getDocument`, and `validateConfig`.
@@ -392,11 +392,11 @@ You never need to modify the sync engine when adding a connector.
 
 The `icon` field on `ConnectorConfig` is used throughout the UI — in the connector list, the add-connector modal, and as the document icon in the knowledge base table (replacing the generic file type icon for connector-sourced documents). The icon is read from `CONNECTOR_REGISTRY[connectorType].icon` at runtime — no separate icon map to maintain.
 
-If the service already has an icon in `apps/sim/components/icons.tsx` (from a tool integration), reuse it. Otherwise, ask the user to provide the SVG.
+If the service already has an icon in `apps/nocobuilder/components/icons.tsx` (from a tool integration), reuse it. Otherwise, ask the user to provide the SVG.
 
 ## Registering
 
-Add one line to `apps/sim/connectors/registry.ts`:
+Add one line to `apps/nocobuilder/connectors/registry.ts`:
 
 ```typescript
 import { {service}Connector } from '@/connectors/{service}'
@@ -409,8 +409,8 @@ export const CONNECTOR_REGISTRY: ConnectorRegistry = {
 
 ## Reference Implementations
 
-- **OAuth**: `apps/sim/connectors/confluence/confluence.ts` — multiple config field types, `mapTags`, label fetching
-- **API key**: `apps/sim/connectors/fireflies/fireflies.ts` — GraphQL API with Bearer token auth
+- **OAuth**: `apps/nocobuilder/connectors/confluence/confluence.ts` — multiple config field types, `mapTags`, label fetching
+- **API key**: `apps/nocobuilder/connectors/fireflies/fireflies.ts` — GraphQL API with Bearer token auth
 
 ## Checklist
 

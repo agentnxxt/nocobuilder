@@ -1,23 +1,23 @@
 # Sim Python SDK
 
-The official Python SDK for [Sim](https://sim.ai), allowing you to execute workflows programmatically from your Python applications.
+The official Python SDK for [Sim](https://nocobuilder.cloud), allowing you to execute workflows programmatically from your Python applications.
 
 ## Installation
 
 ```bash
-pip install simstudio-sdk
+pip install nocobuilder-sdk
 ```
 
 ## Quick Start
 
 ```python
 import os
-from simstudio import SimStudioClient
+from nocobuilder import NocoBuilderClient
 
 # Initialize the client
-client = SimStudioClient(
+client = NocoBuilderClient(
     api_key=os.getenv("SIM_API_KEY", "your-api-key-here"),
-    base_url="https://sim.ai"  # optional, defaults to https://sim.ai
+    base_url="https://nocobuilder.cloud"  # optional, defaults to https://nocobuilder.cloud
 )
 
 # Execute a workflow
@@ -30,16 +30,16 @@ except Exception as error:
 
 ## API Reference
 
-### SimStudioClient
+### NocoBuilderClient
 
 #### Constructor
 
 ```python
-SimStudioClient(api_key: str, base_url: str = "https://sim.ai")
+NocoBuilderClient(api_key: str, base_url: str = "https://nocobuilder.cloud")
 ```
 
 - `api_key` (str): Your Sim API key
-- `base_url` (str, optional): Base URL for the Sim API (defaults to `https://sim.ai`)
+- `base_url` (str, optional): Base URL for the Sim API (defaults to `https://nocobuilder.cloud`)
 
 #### Methods
 
@@ -232,10 +232,10 @@ class WorkflowStatus:
     needs_redeployment: bool = False
 ```
 
-### SimStudioError
+### NocoBuilderError
 
 ```python
-class SimStudioError(Exception):
+class NocoBuilderError(Exception):
     def __init__(self, message: str, code: Optional[str] = None, status: Optional[int] = None):
         super().__init__(message)
         self.code = code
@@ -281,9 +281,9 @@ class UsageLimits:
 
 ```python
 import os
-from simstudio import SimStudioClient
+from nocobuilder import NocoBuilderClient
 
-client = SimStudioClient(api_key=os.getenv("SIM_API_KEY"))
+client = NocoBuilderClient(api_key=os.getenv("SIM_API_KEY"))
 
 def run_workflow():
     try:
@@ -316,16 +316,16 @@ run_workflow()
 ### Error Handling
 
 ```python
-from simstudio import SimStudioClient, SimStudioError
+from nocobuilder import NocoBuilderClient, NocoBuilderError
 import os
 
-client = SimStudioClient(api_key=os.getenv("SIM_API_KEY"))
+client = NocoBuilderClient(api_key=os.getenv("SIM_API_KEY"))
 
 def execute_with_error_handling():
     try:
         result = client.execute_workflow("workflow-id")
         return result
-    except SimStudioError as error:
+    except NocoBuilderError as error:
         if error.code == "UNAUTHORIZED":
             print("Invalid API key")
         elif error.code == "TIMEOUT":
@@ -345,11 +345,11 @@ def execute_with_error_handling():
 ### Context Manager Usage
 
 ```python
-from simstudio import SimStudioClient
+from nocobuilder import NocoBuilderClient
 import os
 
 # Using context manager to automatically close the session
-with SimStudioClient(api_key=os.getenv("SIM_API_KEY")) as client:
+with NocoBuilderClient(api_key=os.getenv("SIM_API_KEY")) as client:
     result = client.execute_workflow("workflow-id")
     print("Result:", result)
 # Session is automatically closed here
@@ -359,12 +359,12 @@ with SimStudioClient(api_key=os.getenv("SIM_API_KEY")) as client:
 
 ```python
 import os
-from simstudio import SimStudioClient
+from nocobuilder import NocoBuilderClient
 
 # Using environment variables
-client = SimStudioClient(
+client = NocoBuilderClient(
     api_key=os.getenv("SIM_API_KEY"),
-    base_url=os.getenv("SIM_BASE_URL", "https://sim.ai")
+    base_url=os.getenv("SIM_BASE_URL", "https://nocobuilder.cloud")
 )
 ```
 
@@ -393,10 +393,10 @@ Alternatively, you can manually provide files using the URL format:
 ```
 
 ```python
-from simstudio import SimStudioClient
+from nocobuilder import NocoBuilderClient
 import os
 
-client = SimStudioClient(api_key=os.getenv("SIM_API_KEY"))
+client = NocoBuilderClient(api_key=os.getenv("SIM_API_KEY"))
 
 # Upload a single file - include it under the field name from your API trigger
 with open('document.pdf', 'rb') as f:
@@ -422,10 +422,10 @@ with open('doc1.pdf', 'rb') as f1, open('doc2.pdf', 'rb') as f2:
 ### Batch Workflow Execution
 
 ```python
-from simstudio import SimStudioClient
+from nocobuilder import NocoBuilderClient
 import os
 
-client = SimStudioClient(api_key=os.getenv("SIM_API_KEY"))
+client = NocoBuilderClient(api_key=os.getenv("SIM_API_KEY"))
 
 def execute_workflows_batch(workflow_data_pairs):
     """Execute multiple workflows with different input data."""
@@ -468,7 +468,7 @@ for result in results:
 
 ## Getting Your API Key
 
-1. Log in to your [Sim](https://sim.ai) account
+1. Log in to your [Sim](https://nocobuilder.cloud) account
 2. Navigate to your workflow
 3. Click on "Deploy" to deploy your workflow
 4. Select or create an API key during the deployment process
@@ -507,16 +507,16 @@ Run code quality checks:
 
 ```bash
 # Code formatting
-black simstudio/
+black nocobuilder/
 
 # Linting
-flake8 simstudio/ --max-line-length=100
+flake8 nocobuilder/ --max-line-length=100
 
 # Type checking
-mypy simstudio/
+mypy nocobuilder/
 
 # Import sorting
-isort simstudio/
+isort nocobuilder/
 ```
 
 ## Requirements

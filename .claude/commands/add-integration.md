@@ -33,7 +33,7 @@ Before writing any code:
 
 ### Directory Structure
 ```
-apps/sim/tools/{service}/
+apps/nocobuilder/tools/{service}/
 ├── index.ts          # Barrel exports
 ├── types.ts          # TypeScript interfaces
 ├── {action1}.ts      # Tool for action 1
@@ -107,7 +107,7 @@ export const {service}{Action}Tool: ToolConfig<Params, Response> = {
 ## Step 3: Create Block
 
 ### File Location
-`apps/sim/blocks/blocks/{service}.ts`
+`apps/nocobuilder/blocks/blocks/{service}.ts`
 
 ### Block Structure
 ```typescript
@@ -121,7 +121,7 @@ export const {Service}Block: BlockConfig = {
   name: '{Service}',
   description: '...',
   longDescription: '...',
-  docsLink: 'https://docs.sim.ai/tools/{service}',
+  docsLink: 'https://docs.nocobuilder.cloud/tools/{service}',
   category: 'tools',
   bgColor: '#HEXCOLOR',
   icon: {Service}Icon,
@@ -222,7 +222,7 @@ export const {Service}Block: BlockConfig = {
 ## Step 4: Add Icon
 
 ### File Location
-`apps/sim/components/icons.tsx`
+`apps/nocobuilder/components/icons.tsx`
 
 ### Pattern
 ```typescript
@@ -261,7 +261,7 @@ If the service supports webhooks, create triggers using the generic `buildTrigge
 
 ### Directory Structure
 ```
-apps/sim/triggers/{service}/
+apps/nocobuilder/triggers/{service}/
 ├── index.ts      # Barrel exports
 ├── utils.ts      # Trigger options, setup instructions, extra fields
 ├── {event_a}.ts  # Primary trigger (includes dropdown)
@@ -323,7 +323,7 @@ See `/add-trigger` skill for complete documentation.
 
 ## Step 6: Register Everything
 
-### Tools Registry (`apps/sim/tools/registry.ts`)
+### Tools Registry (`apps/nocobuilder/tools/registry.ts`)
 
 ```typescript
 // Add import (alphabetically)
@@ -340,7 +340,7 @@ export const tools: Record<string, ToolConfig> = {
 }
 ```
 
-### Block Registry (`apps/sim/blocks/registry.ts`)
+### Block Registry (`apps/nocobuilder/blocks/registry.ts`)
 
 ```typescript
 // Add import (alphabetically)
@@ -353,7 +353,7 @@ export const registry: Record<string, BlockConfig> = {
 }
 ```
 
-### Trigger Registry (`apps/sim/triggers/registry.ts`) - If triggers exist
+### Trigger Registry (`apps/nocobuilder/triggers/registry.ts`) - If triggers exist
 
 ```typescript
 // Add import (alphabetically)
@@ -560,7 +560,7 @@ tools: {
 
 #### 3. Create Internal API Route
 
-Create `apps/sim/app/api/tools/{service}/{action}/route.ts`:
+Create `apps/nocobuilder/app/api/tools/{service}/{action}/route.ts`:
 
 ```typescript
 import { createLogger } from '@sim/logger'

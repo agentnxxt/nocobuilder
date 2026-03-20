@@ -17,7 +17,7 @@ export function StructuredData({
   dateModified,
   breadcrumb,
 }: StructuredDataProps) {
-  const baseUrl = 'https://docs.sim.ai'
+  const baseUrl = 'https://docs.nocobuilder.cloud'
 
   const articleStructuredData = {
     '@context': 'https://schema.org',

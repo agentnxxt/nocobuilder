@@ -16,7 +16,7 @@ When the user asks you to create tools for a service:
 
 ## Directory Structure
 
-Create files in `apps/sim/tools/{service}/`:
+Create files in `apps/nocobuilder/tools/{service}/`:
 ```
 tools/{service}/
 ├── index.ts      # Barrel export
@@ -267,7 +267,7 @@ export * from './types'
 ## Registering Tools
 
 After creating tools, remind the user to:
-1. Import tools in `apps/sim/tools/registry.ts`
+1. Import tools in `apps/nocobuilder/tools/registry.ts`
 2. Add to the `tools` object with snake_case keys:
 ```typescript
 import { serviceActionTool } from '@/tools/{service}'

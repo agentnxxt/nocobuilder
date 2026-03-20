@@ -17,7 +17,7 @@ When the user asks you to create triggers for a service:
 ## Directory Structure
 
 ```
-apps/sim/triggers/{service}/
+apps/nocobuilder/triggers/{service}/
 ├── index.ts              # Barrel exports
 ├── utils.ts              # Service-specific helpers (trigger options, setup instructions, extra fields)
 ├── {event_a}.ts          # Primary trigger (includes dropdown)
@@ -208,7 +208,7 @@ export { {service}WebhookTrigger } from './webhook'
 
 ## Step 5: Register Triggers
 
-### Trigger Registry (`apps/sim/triggers/registry.ts`)
+### Trigger Registry (`apps/nocobuilder/triggers/registry.ts`)
 
 ```typescript
 // Add import
@@ -231,7 +231,7 @@ export const TRIGGER_REGISTRY: TriggerRegistry = {
 
 ## Step 6: Connect Triggers to Block
 
-In the block file (`apps/sim/blocks/blocks/{service}.ts`):
+In the block file (`apps/nocobuilder/blocks/blocks/{service}.ts`):
 
 ```typescript
 import { {Service}Icon } from '@/components/icons'
@@ -339,7 +339,7 @@ export function {service}SetupInstructions(eventType: string): string {
 
 #### 3. Add Webhook Creation to API Route
 
-In `apps/sim/app/api/webhooks/route.ts`, add provider-specific logic after the database save:
+In `apps/nocobuilder/app/api/webhooks/route.ts`, add provider-specific logic after the database save:
 
 ```typescript
 // --- {Service} specific logic ---
@@ -464,7 +464,7 @@ async function create{Service}WebhookSubscription(
 
 #### 4. Add Webhook Deletion to Provider Subscriptions
 
-In `apps/sim/lib/webhooks/provider-subscriptions.ts`:
+In `apps/nocobuilder/lib/webhooks/provider-subscriptions.ts`:
 
 1. Add a logger:
 ```typescript
@@ -559,7 +559,7 @@ All fields automatically have:
 There are two related but separate concerns:
 
 1. **Trigger `outputs`** - Schema/contract defining what fields SHOULD be available. Used by UI for tag dropdown.
-2. **`formatWebhookInput`** - Implementation that transforms raw webhook payload into actual data. Located in `apps/sim/lib/webhooks/utils.server.ts`.
+2. **`formatWebhookInput`** - Implementation that transforms raw webhook payload into actual data. Located in `apps/nocobuilder/lib/webhooks/utils.server.ts`.
 
 **These MUST be aligned.** The fields returned by `formatWebhookInput` should match what's defined in trigger `outputs`. If they differ:
 - Tag dropdown shows fields that don't exist (broken variable resolution)
@@ -572,7 +572,7 @@ There are two related but separate concerns:
 
 ### Adding a Handler
 
-In `apps/sim/lib/webhooks/utils.server.ts`, add a handler block:
+In `apps/nocobuilder/lib/webhooks/utils.server.ts`, add a handler block:
 
 ```typescript
 if (foundWebhook.provider === '{service}') {
@@ -691,13 +691,13 @@ export const {service}WebhookTrigger: TriggerConfig = {
 ### Automatic Webhook Registration (if supported)
 - [ ] Added API key field to `build{Service}ExtraFields` with `password: true`
 - [ ] Updated setup instructions for automatic webhook creation
-- [ ] Added provider-specific logic to `apps/sim/app/api/webhooks/route.ts`
+- [ ] Added provider-specific logic to `apps/nocobuilder/app/api/webhooks/route.ts`
 - [ ] Added `create{Service}WebhookSubscription` helper function
 - [ ] Added `delete{Service}Webhook` function to `provider-subscriptions.ts`
 - [ ] Added provider to `cleanupExternalWebhook` function
 
 ### Webhook Input Formatting
-- [ ] Added handler in `apps/sim/lib/webhooks/utils.server.ts` (if custom formatting needed)
+- [ ] Added handler in `apps/nocobuilder/lib/webhooks/utils.server.ts` (if custom formatting needed)
 - [ ] Handler returns fields matching trigger `outputs` exactly
 - [ ] Run `bunx scripts/check-trigger-alignment.ts {service}` to verify alignment
 

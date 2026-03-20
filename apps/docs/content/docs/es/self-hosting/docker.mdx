@@ -10,7 +10,7 @@ import { Callout } from 'fumadocs-ui/components/callout'
 
 ```bash
 # Clone and start
-git clone https://github.com/simstudioai/sim.git && cd sim
+git clone https://github.com/nocobuilder/sim.git && cd sim
 docker compose -f docker-compose.prod.yml up -d
 ```
 
@@ -23,7 +23,7 @@ Abre [http://localhost:3000](http://localhost:3000)
 ```bash
 # Generate secrets
 cat > .env << EOF
-DATABASE_URL=postgresql://postgres:postgres@db:5432/simstudio
+DATABASE_URL=postgresql://postgres:postgres@db:5432/nocobuilder
 BETTER_AUTH_SECRET=$(openssl rand -hex 32)
 ENCRYPTION_KEY=$(openssl rand -hex 32)
 INTERNAL_API_SECRET=$(openssl rand -hex 32)
@@ -142,7 +142,7 @@ OLLAMA_URL=http://192.168.1.100:11434 docker compose -f docker-compose.prod.yml 
 
 ```bash
 # View logs
-docker compose -f docker-compose.prod.yml logs -f simstudio
+docker compose -f docker-compose.prod.yml logs -f nocobuilder
 
 # Stop
 docker compose -f docker-compose.prod.yml down
@@ -151,5 +151,5 @@ docker compose -f docker-compose.prod.yml down
 docker compose -f docker-compose.prod.yml pull && docker compose -f docker-compose.prod.yml up -d
 
 # Backup database
-docker compose -f docker-compose.prod.yml exec db pg_dump -U postgres simstudio > backup.sql
+docker compose -f docker-compose.prod.yml exec db pg_dump -U postgres nocobuilder > backup.sql
 ```

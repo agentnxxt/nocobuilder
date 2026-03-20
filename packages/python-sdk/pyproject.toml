@@ -3,10 +3,10 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "simstudio-sdk"
+name = "nocobuilder-sdk"
 version = "0.1.2"
 authors = [
-    {name = "Sim", email = "help@sim.ai"},
+    {name = "Sim", email = "help@nocobuilder.cloud"},
 ]
 description = "Sim SDK - Execute workflows programmatically"
 readme = "README.md"
@@ -27,7 +27,7 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
-keywords = ["simstudio", "ai", "workflow", "sdk", "api", "automation"]
+keywords = ["nocobuilder", "ai", "workflow", "sdk", "api", "automation"]
 dependencies = [
     "requests>=2.25.0",
     "typing-extensions>=4.0.0; python_version<'3.10'",
@@ -45,14 +45,14 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://sim.ai"
-Documentation = "https://docs.sim.ai"
-Repository = "https://github.com/simstudioai/sim"
-"Bug Reports" = "https://github.com/simstudioai/sim/issues"
+Homepage = "https://nocobuilder.cloud"
+Documentation = "https://docs.nocobuilder.cloud"
+Repository = "https://github.com/nocobuilder/sim"
+"Bug Reports" = "https://github.com/nocobuilder/sim/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["simstudio*"]
+include = ["nocobuilder*"]
 
 [tool.black]
 line-length = 100

@@ -1,5 +1,5 @@
 {
-  "name": "simstudio-ts-sdk",
+  "name": "nocobuilder-ts-sdk",
   "version": "0.1.2",
   "description": "Sim SDK - Execute workflows programmatically",
   "type": "module",
@@ -25,7 +25,7 @@
     "dist"
   ],
   "keywords": [
-    "simstudio",
+    "nocobuilder",
     "ai",
     "workflow",
     "sdk",
@@ -33,7 +33,7 @@
     "automation",
     "typescript"
   ],
-  "author": "Sim",
+  "author": "AgentNXXT",
   "license": "Apache-2.0",
   "dependencies": {
     "node-fetch": "^3.3.2"
@@ -53,11 +53,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/simstudioai/sim.git",
+    "url": "https://github.com/nocobuilder/sim.git",
     "directory": "packages/ts-sdk"
   },
-  "homepage": "https://sim.ai",
+  "homepage": "https://nocobuilder.cloud",
   "bugs": {
-    "url": "https://github.com/simstudioai/sim/issues"
+    "url": "https://github.com/nocobuilder/sim/issues"
   }
 }

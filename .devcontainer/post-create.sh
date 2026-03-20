@@ -24,15 +24,15 @@ fi
 
 # Add project commands to shell profile
 echo "📄 Setting up project commands..."
-# Add sourcing of sim-commands.sh to user's shell config files if they exist
+# Add sourcing of noco-commands.sh to user's shell config files if they exist
 for rcfile in ~/.bashrc ~/.zshrc; do
   if [ -f "$rcfile" ]; then
     # Check if already added
-    if ! grep -q "sim-commands.sh" "$rcfile"; then
+    if ! grep -q "noco-commands.sh" "$rcfile"; then
       echo "" >> "$rcfile"
       echo "# Sim project commands" >> "$rcfile"
-      echo "if [ -f /workspace/.devcontainer/sim-commands.sh ]; then" >> "$rcfile"
-      echo "  source /workspace/.devcontainer/sim-commands.sh" >> "$rcfile"
+      echo "if [ -f /workspace/.devcontainer/noco-commands.sh ]; then" >> "$rcfile"
+      echo "  source /workspace/.devcontainer/noco-commands.sh" >> "$rcfile"
       echo "fi" >> "$rcfile"
     fi
   fi
@@ -41,8 +41,8 @@ done
 # If no rc files exist yet, create a minimal one
 if [ ! -f ~/.bashrc ] && [ ! -f ~/.zshrc ]; then
   echo "# Source Sim project commands" > ~/.bashrc
-  echo "if [ -f /workspace/.devcontainer/sim-commands.sh ]; then" >> ~/.bashrc
-  echo "  source /workspace/.devcontainer/sim-commands.sh" >> ~/.bashrc
+  echo "if [ -f /workspace/.devcontainer/noco-commands.sh ]; then" >> ~/.bashrc
+  echo "  source /workspace/.devcontainer/noco-commands.sh" >> ~/.bashrc
   echo "fi" >> ~/.bashrc
 fi
 
@@ -51,7 +51,7 @@ echo "📦 Cleaning and reinstalling dependencies..."
 if [ -d "node_modules" ]; then
   echo "Removing existing node_modules to ensure platform compatibility..."
   rm -rf node_modules
-  rm -rf apps/sim/node_modules
+  rm -rf apps/nocobuilder/node_modules
   rm -rf apps/docs/node_modules
 fi
 
@@ -65,24 +65,24 @@ bun install
 
 # Check for native dependencies
 echo "Checking for native dependencies compatibility..."
-if grep -q '"trustedDependencies"' apps/sim/package.json 2>/dev/null; then
+if grep -q '"trustedDependencies"' apps/nocobuilder/package.json 2>/dev/null; then
   echo "⚠️ Native dependencies detected. Bun will handle compatibility during install."
 fi
 
 # Set up environment variables if .env doesn't exist for the sim app
-if [ ! -f "apps/sim/.env" ]; then
+if [ ! -f "apps/nocobuilder/.env" ]; then
   echo "📄 Creating .env file from template..."
-  if [ -f "apps/sim/.env.example" ]; then
-    cp apps/sim/.env.example apps/sim/.env
+  if [ -f "apps/nocobuilder/.env.example" ]; then
+    cp apps/nocobuilder/.env.example apps/nocobuilder/.env
   else
-    echo "DATABASE_URL=postgresql://postgres:postgres@db:5432/simstudio" > apps/sim/.env
+    echo "DATABASE_URL=postgresql://postgres:postgres@db:5432/nocobuilder" > apps/nocobuilder/.env
   fi
 fi
 
 # Generate schema and run database migrations
 echo "🗃️ Running database schema generation and migrations..."
 echo "Generating schema..."
-cd apps/sim
+cd apps/nocobuilder
 bunx drizzle-kit generate
 cd ../..
 
@@ -93,8 +93,8 @@ echo "Waiting for database to be ready..."
   while [ $timeout -gt 0 ]; do
     if PGPASSWORD=postgres psql -h db -U postgres -c '\q' 2>/dev/null; then
       echo "Database is ready!"
-      cd apps/sim
-      DATABASE_URL=postgresql://postgres:postgres@db:5432/simstudio bunx drizzle-kit push
+      cd apps/nocobuilder
+      DATABASE_URL=postgresql://postgres:postgres@db:5432/nocobuilder bunx drizzle-kit push
       cd ../..
       break
     fi
@@ -118,7 +118,7 @@ echo ""
 echo "Your environment is now ready. A new terminal session will show"
 echo "available commands. You can start the development server with:"
 echo ""
-echo "  sim-start"
+echo "  noco-start"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 

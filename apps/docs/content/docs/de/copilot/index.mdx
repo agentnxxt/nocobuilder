@@ -14,8 +14,8 @@ Copilot ist dein Assistent im Editor, der dir hilft, Workflows mit Sim Copilot z
 - **Bearbeiten**: Nimmt Änderungen an Blöcken, Verbindungen und Einstellungen vor, wenn du zustimmst
 
 <Callout type="info">
-  Copilot ist ein von Sim verwalteter Dienst. Für selbst gehostete Installationen generiere einen Copilot API-Schlüssel in der gehosteten App (sim.ai → Einstellungen → Copilot)
-  1. Gehe zu [sim.ai](https://sim.ai) → Einstellungen → Copilot und generiere einen Copilot API-Schlüssel
+  Copilot ist ein von Sim verwalteter Dienst. Für selbst gehostete Installationen generiere einen Copilot API-Schlüssel in der gehosteten App (nocobuilder.cloud → Einstellungen → Copilot)
+  1. Gehe zu [nocobuilder.cloud](https://nocobuilder.cloud) → Einstellungen → Copilot und generiere einen Copilot API-Schlüssel
   2. Setze `COPILOT_API_KEY` in deiner selbst gehosteten Umgebung auf diesen Wert
 </Callout>
 
@@ -254,7 +254,7 @@ Sie können Copilot als MCP-Server in Ihrem bevorzugten Editor oder AI-Client ve
 
 Um sich mit dem Copilot-MCP-Server zu verbinden, benötigen Sie einen **Copilot-API-Schlüssel**:
 
-1. Gehen Sie zu [sim.ai](https://sim.ai) und melden Sie sich an
+1. Gehen Sie zu [nocobuilder.cloud](https://nocobuilder.cloud) und melden Sie sich an
 2. Navigieren Sie zu **Einstellungen** → **Copilot**
 3. Klicken Sie auf **API-Schlüssel generieren**
 4. Kopieren Sie den Schlüssel – er wird nur einmal angezeigt
@@ -269,7 +269,7 @@ Fügen Sie Folgendes zu Ihrer `.cursor/mcp.json` (Projektebene) oder den globale
 {
   "mcpServers": {
     "sim-copilot": {
-      "url": "https://www.sim.ai/api/mcp/copilot",
+      "url": "https://www.nocobuilder.cloud/api/mcp/copilot",
       "headers": {
         "X-API-Key": "YOUR_COPILOT_API_KEY"
       }
@@ -287,7 +287,7 @@ Führen Sie den folgenden Befehl aus, um den Copilot MCP-Server hinzuzufügen:
 ```bash
 claude mcp add sim-copilot \
   --transport http \
-  https://www.sim.ai/api/mcp/copilot \
+  https://www.nocobuilder.cloud/api/mcp/copilot \
   --header "X-API-Key: YOUR_COPILOT_API_KEY"
 ```
 
@@ -305,7 +305,7 @@ Claude Desktop benötigt [`mcp-remote`](https://www.npmjs.com/package/mcp-remote
       "args": [
         "-y",
         "mcp-remote",
-        "https://www.sim.ai/api/mcp/copilot",
+        "https://www.nocobuilder.cloud/api/mcp/copilot",
         "--header",
         "X-API-Key: YOUR_COPILOT_API_KEY"
       ]
@@ -326,7 +326,7 @@ Fügen Sie Folgendes zu Ihrer VS Code `settings.json` oder Workspace `.vscode/se
     "servers": {
       "sim-copilot": {
         "type": "http",
-        "url": "https://www.sim.ai/api/mcp/copilot",
+        "url": "https://www.nocobuilder.cloud/api/mcp/copilot",
         "headers": {
           "X-API-Key": "YOUR_COPILOT_API_KEY"
         }
@@ -339,5 +339,5 @@ Fügen Sie Folgendes zu Ihrer VS Code `settings.json` oder Workspace `.vscode/se
 Ersetzen Sie `YOUR_COPILOT_API_KEY` durch Ihren Schlüssel.
 
 <Callout type="info">
-  Für selbst gehostete Deployments ersetzen Sie `https://www.sim.ai` durch Ihre selbst gehostete Sim-URL.
+  Für selbst gehostete Deployments ersetzen Sie `https://www.nocobuilder.cloud` durch Ihre selbst gehostete Sim-URL.
 </Callout>

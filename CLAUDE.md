@@ -19,7 +19,7 @@ You are a professional software engineer. All code must follow best practices: a
 
 ### Root Structure
 ```
-apps/sim/
+apps/nocobuilder/
 ├── app/           # Next.js app router (pages, API routes)
 ├── blocks/        # Block definitions and registry
 ├── components/    # Shared UI (emcn/, ui/)

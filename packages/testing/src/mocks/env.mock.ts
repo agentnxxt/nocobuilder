@@ -6,19 +6,19 @@ import { vi } from 'vitest'
 export const defaultMockEnv = {
   // Core
   DATABASE_URL: 'postgresql://test:test@localhost:5432/test',
-  BETTER_AUTH_URL: 'https://test.sim.ai',
+  BETTER_AUTH_URL: 'https://test.nocobuilder.cloud',
   BETTER_AUTH_SECRET: 'test-secret-that-is-at-least-32-chars-long',
   ENCRYPTION_KEY: 'test-encryption-key-32-chars-long!',
   INTERNAL_API_SECRET: 'test-internal-api-secret-32-chars!',
 
   // Email
   RESEND_API_KEY: 'test-resend-key',
-  FROM_EMAIL_ADDRESS: 'Sim <noreply@test.sim.ai>',
-  EMAIL_DOMAIN: 'test.sim.ai',
-  PERSONAL_EMAIL_FROM: 'Test <test@test.sim.ai>',
+  FROM_EMAIL_ADDRESS: 'Sim <noreply@test.nocobuilder.cloud>',
+  EMAIL_DOMAIN: 'test.nocobuilder.cloud',
+  PERSONAL_EMAIL_FROM: 'Test <test@test.nocobuilder.cloud>',
 
   // URLs
-  NEXT_PUBLIC_APP_URL: 'https://test.sim.ai',
+  NEXT_PUBLIC_APP_URL: 'https://test.nocobuilder.cloud',
 }
 
 /**

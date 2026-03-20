@@ -6,8 +6,8 @@
     "version": "1.0.0",
     "contact": {
       "name": "Sim Support",
-      "email": "help@sim.ai",
-      "url": "https://www.sim.ai"
+      "email": "help@nocobuilder.cloud",
+      "url": "https://www.nocobuilder.cloud"
     },
     "license": {
       "name": "Apache 2.0",
@@ -16,7 +16,7 @@
   },
   "servers": [
     {
-      "url": "https://www.sim.ai",
+      "url": "https://www.nocobuilder.cloud",
       "description": "Production"
     }
   ],
@@ -67,7 +67,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X POST \\\n  \"https://www.sim.ai/api/workflows/{id}/execute\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"input\": {\n      \"key\": \"value\"\n    }\n  }'"
+            "source": "curl -X POST \\\n  \"https://www.nocobuilder.cloud/api/workflows/{id}/execute\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"input\": {\n      \"key\": \"value\"\n    }\n  }'"
           }
         ],
         "parameters": [
@@ -176,7 +176,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X POST \\\n  \"https://www.sim.ai/api/workflows/{id}/executions/{executionId}/cancel\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X POST \\\n  \"https://www.nocobuilder.cloud/api/workflows/{id}/executions/{executionId}/cancel\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -246,7 +246,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/v1/workflows?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/v1/workflows?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -352,7 +352,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/v1/workflows/{id}\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/v1/workflows/{id}\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -421,7 +421,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/jobs/{jobId}\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/jobs/{jobId}\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -481,7 +481,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/v1/logs?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/v1/logs?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -698,7 +698,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/v1/logs/{id}\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/v1/logs/{id}\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -769,7 +769,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/v1/logs/executions/{executionId}\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/v1/logs/executions/{executionId}\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -890,7 +890,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/v1/audit-logs?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/v1/audit-logs?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -1042,7 +1042,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/v1/audit-logs/{id}\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/v1/audit-logs/{id}\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -1116,7 +1116,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/users/me/usage-limits\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/users/me/usage-limits\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "responses": {
@@ -1173,7 +1173,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/v1/tables?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/v1/tables?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -1266,7 +1266,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X POST \\\n  \"https://www.sim.ai/api/v1/tables\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"name\": \"contacts\",\n    \"description\": \"Customer contacts\",\n    \"schema\": {\n      \"columns\": [\n        { \"name\": \"email\", \"type\": \"string\", \"required\": true, \"unique\": true },\n        { \"name\": \"name\", \"type\": \"string\", \"required\": true },\n        { \"name\": \"age\", \"type\": \"number\" }\n      ]\n    }\n  }'"
+            "source": "curl -X POST \\\n  \"https://www.nocobuilder.cloud/api/v1/tables\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"name\": \"contacts\",\n    \"description\": \"Customer contacts\",\n    \"schema\": {\n      \"columns\": [\n        { \"name\": \"email\", \"type\": \"string\", \"required\": true, \"unique\": true },\n        { \"name\": \"name\", \"type\": \"string\", \"required\": true },\n        { \"name\": \"age\", \"type\": \"number\" }\n      ]\n    }\n  }'"
           }
         ],
         "requestBody": {
@@ -1417,7 +1417,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/v1/tables/{tableId}?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/v1/tables/{tableId}?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -1506,7 +1506,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X DELETE \\\n  \"https://www.sim.ai/api/v1/tables/{tableId}?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X DELETE \\\n  \"https://www.nocobuilder.cloud/api/v1/tables/{tableId}?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -1577,7 +1577,7 @@
         "x-codeSamples": [
           {
             "lang": "curl",
-            "source": "curl -X POST \\\n  \"https://www.sim.ai/api/v1/tables/{tableId}/columns\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"column\": {\n      \"name\": \"email\",\n      \"type\": \"string\",\n      \"required\": true,\n      \"unique\": true\n    }\n  }'"
+            "source": "curl -X POST \\\n  \"https://www.nocobuilder.cloud/api/v1/tables/{tableId}/columns\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"column\": {\n      \"name\": \"email\",\n      \"type\": \"string\",\n      \"required\": true,\n      \"unique\": true\n    }\n  }'"
           }
         ],
         "parameters": [
@@ -1707,7 +1707,7 @@
         "x-codeSamples": [
           {
             "lang": "curl",
-            "source": "curl -X PATCH \\\n  \"https://www.sim.ai/api/v1/tables/{tableId}/columns\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"columnName\": \"old_name\",\n    \"updates\": {\n      \"name\": \"new_name\",\n      \"type\": \"number\"\n    }\n  }'"
+            "source": "curl -X PATCH \\\n  \"https://www.nocobuilder.cloud/api/v1/tables/{tableId}/columns\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"columnName\": \"old_name\",\n    \"updates\": {\n      \"name\": \"new_name\",\n      \"type\": \"number\"\n    }\n  }'"
           }
         ],
         "parameters": [
@@ -1835,7 +1835,7 @@
         "x-codeSamples": [
           {
             "lang": "curl",
-            "source": "curl -X DELETE \\\n  \"https://www.sim.ai/api/v1/tables/{tableId}/columns\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"columnName\": \"old_column\"\n  }'"
+            "source": "curl -X DELETE \\\n  \"https://www.nocobuilder.cloud/api/v1/tables/{tableId}/columns\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"columnName\": \"old_column\"\n  }'"
           }
         ],
         "parameters": [
@@ -1934,7 +1934,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/v1/tables/{tableId}/rows?workspaceId=YOUR_WORKSPACE_ID&limit=50&offset=0\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/v1/tables/{tableId}/rows?workspaceId=YOUR_WORKSPACE_ID&limit=50&offset=0\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -2080,7 +2080,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X POST \\\n  \"https://www.sim.ai/api/v1/tables/{tableId}/rows\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"data\": {\n      \"email\": \"user@example.com\",\n      \"name\": \"Jane Doe\"\n    }\n  }'"
+            "source": "curl -X POST \\\n  \"https://www.nocobuilder.cloud/api/v1/tables/{tableId}/rows\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"data\": {\n      \"email\": \"user@example.com\",\n      \"name\": \"Jane Doe\"\n    }\n  }'"
           }
         ],
         "parameters": [
@@ -2245,7 +2245,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X PUT \\\n  \"https://www.sim.ai/api/v1/tables/{tableId}/rows\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"filter\": { \"status\": \"pending\" },\n    \"data\": { \"status\": \"active\" }\n  }'"
+            "source": "curl -X PUT \\\n  \"https://www.nocobuilder.cloud/api/v1/tables/{tableId}/rows\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"filter\": { \"status\": \"pending\" },\n    \"data\": { \"status\": \"active\" }\n  }'"
           }
         ],
         "parameters": [
@@ -2326,7 +2326,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X DELETE \\\n  \"https://www.sim.ai/api/v1/tables/{tableId}/rows\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"rowIds\": [\"row_abc123\", \"row_def456\"]\n  }'"
+            "source": "curl -X DELETE \\\n  \"https://www.nocobuilder.cloud/api/v1/tables/{tableId}/rows\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"rowIds\": [\"row_abc123\", \"row_def456\"]\n  }'"
           }
         ],
         "parameters": [
@@ -2474,7 +2474,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X PATCH \\\n  \"https://www.sim.ai/api/v1/tables/{tableId}/rows\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"updates\": [\n      { \"rowId\": \"row_abc123\", \"data\": { \"status\": \"active\" } },\n      { \"rowId\": \"row_def456\", \"data\": { \"status\": \"archived\" } }\n    ]\n  }'"
+            "source": "curl -X PATCH \\\n  \"https://www.nocobuilder.cloud/api/v1/tables/{tableId}/rows\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"updates\": [\n      { \"rowId\": \"row_abc123\", \"data\": { \"status\": \"active\" } },\n      { \"rowId\": \"row_def456\", \"data\": { \"status\": \"archived\" } }\n    ]\n  }'"
           }
         ],
         "parameters": [
@@ -2570,7 +2570,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/v1/tables/{tableId}/rows/{rowId}?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/v1/tables/{tableId}/rows/{rowId}?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -2653,7 +2653,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X PATCH \\\n  \"https://www.sim.ai/api/v1/tables/{tableId}/rows/{rowId}\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"data\": { \"name\": \"Updated Name\" }\n  }'"
+            "source": "curl -X PATCH \\\n  \"https://www.nocobuilder.cloud/api/v1/tables/{tableId}/rows/{rowId}\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"data\": { \"name\": \"Updated Name\" }\n  }'"
           }
         ],
         "parameters": [
@@ -2766,7 +2766,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X DELETE \\\n  \"https://www.sim.ai/api/v1/tables/{tableId}/rows/{rowId}\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\"\n  }'"
+            "source": "curl -X DELETE \\\n  \"https://www.nocobuilder.cloud/api/v1/tables/{tableId}/rows/{rowId}\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\"\n  }'"
           }
         ],
         "parameters": [
@@ -2864,7 +2864,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X POST \\\n  \"https://www.sim.ai/api/v1/tables/{tableId}/rows/upsert\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"data\": { \"email\": \"user@example.com\", \"name\": \"John\" }\n  }'"
+            "source": "curl -X POST \\\n  \"https://www.nocobuilder.cloud/api/v1/tables/{tableId}/rows/upsert\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"data\": { \"email\": \"user@example.com\", \"name\": \"John\" }\n  }'"
           }
         ],
         "parameters": [
@@ -2986,7 +2986,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/v1/files?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/v1/files?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -3069,7 +3069,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X POST \\\n  \"https://www.sim.ai/api/v1/files\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -F \"workspaceId=YOUR_WORKSPACE_ID\" \\\n  -F \"file=@/path/to/file.csv\""
+            "source": "curl -X POST \\\n  \"https://www.nocobuilder.cloud/api/v1/files\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -F \"workspaceId=YOUR_WORKSPACE_ID\" \\\n  -F \"file=@/path/to/file.csv\""
           }
         ],
         "requestBody": {
@@ -3183,7 +3183,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/v1/files/{fileId}?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -o downloaded-file.csv"
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/v1/files/{fileId}?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -o downloaded-file.csv"
           }
         ],
         "parameters": [
@@ -3282,7 +3282,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X DELETE \\\n  \"https://www.sim.ai/api/v1/files/{fileId}?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X DELETE \\\n  \"https://www.nocobuilder.cloud/api/v1/files/{fileId}?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -3362,7 +3362,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/v1/knowledge?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/v1/knowledge?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -3446,7 +3446,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X POST \\\n  \"https://www.sim.ai/api/v1/knowledge\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"name\": \"Product Documentation\",\n    \"description\": \"Internal product docs for search\",\n    \"chunkingConfig\": {\n      \"maxSize\": 1024,\n      \"minSize\": 100,\n      \"overlap\": 200\n    }\n  }'"
+            "source": "curl -X POST \\\n  \"https://www.nocobuilder.cloud/api/v1/knowledge\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"name\": \"Product Documentation\",\n    \"description\": \"Internal product docs for search\",\n    \"chunkingConfig\": {\n      \"maxSize\": 1024,\n      \"minSize\": 100,\n      \"overlap\": 200\n    }\n  }'"
           }
         ],
         "requestBody": {
@@ -3559,7 +3559,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/v1/knowledge/KB_ID?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/v1/knowledge/KB_ID?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -3645,7 +3645,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X PUT \\\n  \"https://www.sim.ai/api/v1/knowledge/KB_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"name\": \"Updated Name\"\n  }'"
+            "source": "curl -X PUT \\\n  \"https://www.nocobuilder.cloud/api/v1/knowledge/KB_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"name\": \"Updated Name\"\n  }'"
           }
         ],
         "parameters": [
@@ -3769,7 +3769,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X DELETE \\\n  \"https://www.sim.ai/api/v1/knowledge/KB_ID?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X DELETE \\\n  \"https://www.nocobuilder.cloud/api/v1/knowledge/KB_ID?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -3845,7 +3845,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/v1/knowledge/KB_ID/documents?workspaceId=YOUR_WORKSPACE_ID&limit=50&offset=0\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/v1/knowledge/KB_ID/documents?workspaceId=YOUR_WORKSPACE_ID&limit=50&offset=0\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -4033,7 +4033,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X POST \\\n  \"https://www.sim.ai/api/v1/knowledge/KB_ID/documents\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -F \"workspaceId=YOUR_WORKSPACE_ID\" \\\n  -F \"file=@/path/to/document.pdf\""
+            "source": "curl -X POST \\\n  \"https://www.nocobuilder.cloud/api/v1/knowledge/KB_ID/documents\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -F \"workspaceId=YOUR_WORKSPACE_ID\" \\\n  -F \"file=@/path/to/document.pdf\""
           }
         ],
         "parameters": [
@@ -4195,7 +4195,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X GET \\\n  \"https://www.sim.ai/api/v1/knowledge/KB_ID/documents/DOC_ID?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X GET \\\n  \"https://www.nocobuilder.cloud/api/v1/knowledge/KB_ID/documents/DOC_ID?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -4290,7 +4290,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X DELETE \\\n  \"https://www.sim.ai/api/v1/knowledge/KB_ID/documents/DOC_ID?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
+            "source": "curl -X DELETE \\\n  \"https://www.nocobuilder.cloud/api/v1/knowledge/KB_ID/documents/DOC_ID?workspaceId=YOUR_WORKSPACE_ID\" \\\n  -H \"X-API-Key: YOUR_API_KEY\""
           }
         ],
         "parameters": [
@@ -4375,7 +4375,7 @@
             "id": "curl",
             "label": "cURL",
             "lang": "bash",
-            "source": "curl -X POST \\\n  \"https://www.sim.ai/api/v1/knowledge/search\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"knowledgeBaseIds\": [\"KB_ID\"],\n    \"query\": \"How do I reset my password?\",\n    \"topK\": 5\n  }'"
+            "source": "curl -X POST \\\n  \"https://www.nocobuilder.cloud/api/v1/knowledge/search\" \\\n  -H \"X-API-Key: YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"workspaceId\": \"YOUR_WORKSPACE_ID\",\n    \"knowledgeBaseIds\": [\"KB_ID\"],\n    \"query\": \"How do I reset my password?\",\n    \"topK\": 5\n  }'"
           }
         ],
         "requestBody": {
@@ -4925,7 +4925,7 @@
             "type": "string",
             "format": "uri",
             "description": "URL to poll for execution status and results. Returns the full execution result once complete.",
-            "example": "https://www.sim.ai/api/jobs/job_4a3b2c1d0e"
+            "example": "https://www.nocobuilder.cloud/api/jobs/job_4a3b2c1d0e"
           }
         }
       },

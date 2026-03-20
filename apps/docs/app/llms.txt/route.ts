@@ -3,7 +3,7 @@ import { source } from '@/lib/source'
 export const revalidate = false
 
 export async function GET() {
-  const baseUrl = 'https://docs.sim.ai'
+  const baseUrl = 'https://docs.nocobuilder.cloud'
 
   try {
     const pages = source.getPages().filter((page) => {

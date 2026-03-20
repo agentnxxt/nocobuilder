@@ -19,7 +19,7 @@ WORKDIR /app
 
 COPY package.json bun.lock turbo.json ./
 RUN mkdir -p apps packages/db packages/testing packages/logger packages/tsconfig
-COPY apps/sim/package.json ./apps/sim/package.json
+COPY apps/nocobuilder/package.json ./apps/nocobuilder/package.json
 COPY packages/db/package.json ./packages/db/package.json
 COPY packages/testing/package.json ./packages/testing/package.json
 COPY packages/logger/package.json ./packages/logger/package.json
@@ -48,23 +48,23 @@ COPY --from=deps /app/node_modules ./node_modules
 
 # Copy package configuration files (needed for build)
 COPY package.json bun.lock turbo.json ./
-COPY apps/sim/package.json ./apps/sim/package.json
+COPY apps/nocobuilder/package.json ./apps/nocobuilder/package.json
 COPY packages/db/package.json ./packages/db/package.json
 COPY packages/testing/package.json ./packages/testing/package.json
 COPY packages/logger/package.json ./packages/logger/package.json
 
 # Copy workspace configuration files (needed for turbo)
-COPY apps/sim/next.config.ts ./apps/sim/next.config.ts
-COPY apps/sim/tsconfig.json ./apps/sim/tsconfig.json
-COPY apps/sim/tailwind.config.ts ./apps/sim/tailwind.config.ts
-COPY apps/sim/postcss.config.mjs ./apps/sim/postcss.config.mjs
+COPY apps/nocobuilder/next.config.ts ./apps/nocobuilder/next.config.ts
+COPY apps/nocobuilder/tsconfig.json ./apps/nocobuilder/tsconfig.json
+COPY apps/nocobuilder/tailwind.config.ts ./apps/nocobuilder/tailwind.config.ts
+COPY apps/nocobuilder/postcss.config.mjs ./apps/nocobuilder/postcss.config.mjs
 
 # Copy source code (changes most frequently - placed last to maximize cache hits)
-COPY apps/sim ./apps/sim
+COPY apps/nocobuilder ./apps/nocobuilder
 COPY packages ./packages
 
 # Required for standalone nextjs build
-WORKDIR /app/apps/sim
+WORKDIR /app/apps/nocobuilder
 RUN --mount=type=cache,id=bun-cache,target=/root/.bun/install/cache \
     HUSKY=0 bun install sharp --linker=hoisted
 
@@ -74,7 +74,7 @@ ENV NEXT_TELEMETRY_DISABLED=1 \
 
 WORKDIR /app
 
-# Provide dummy database URLs during image build so server code that imports @sim/db
+# Provide dummy database URLs during image build so server code that imports @nocobuilder/db
 # can be evaluated without crashing. Runtime environments should override these.
 ARG DATABASE_URL="postgresql://user:pass@localhost:5432/dummy"
 ENV DATABASE_URL=${DATABASE_URL}
@@ -101,30 +101,30 @@ RUN groupadd -g 1001 nodejs && \
     useradd -u 1001 -g nodejs nextjs
 
 # Copy application artifacts from builder
-COPY --from=builder --chown=nextjs:nodejs /app/apps/sim/public ./apps/sim/public
-COPY --from=builder --chown=nextjs:nodejs /app/apps/sim/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/apps/sim/.next/static ./apps/sim/.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/apps/nocobuilder/public ./apps/nocobuilder/public
+COPY --from=builder --chown=nextjs:nodejs /app/apps/nocobuilder/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/apps/nocobuilder/.next/static ./apps/nocobuilder/.next/static
 
 # Copy isolated-vm native module (compiled for Node.js in deps stage)
 COPY --from=deps --chown=nextjs:nodejs /app/node_modules/isolated-vm ./node_modules/isolated-vm
 
 # Copy the isolated-vm worker script
-COPY --from=builder --chown=nextjs:nodejs /app/apps/sim/lib/execution/isolated-vm-worker.cjs ./apps/sim/lib/execution/isolated-vm-worker.cjs
+COPY --from=builder --chown=nextjs:nodejs /app/apps/nocobuilder/lib/execution/isolated-vm-worker.cjs ./apps/nocobuilder/lib/execution/isolated-vm-worker.cjs
 
 # Guardrails setup with pip caching
-COPY --from=builder --chown=nextjs:nodejs /app/apps/sim/lib/guardrails/requirements.txt ./apps/sim/lib/guardrails/requirements.txt
-COPY --from=builder --chown=nextjs:nodejs /app/apps/sim/lib/guardrails/validate_pii.py ./apps/sim/lib/guardrails/validate_pii.py
+COPY --from=builder --chown=nextjs:nodejs /app/apps/nocobuilder/lib/guardrails/requirements.txt ./apps/nocobuilder/lib/guardrails/requirements.txt
+COPY --from=builder --chown=nextjs:nodejs /app/apps/nocobuilder/lib/guardrails/validate_pii.py ./apps/nocobuilder/lib/guardrails/validate_pii.py
 
 # Install Python dependencies with pip cache mount for faster rebuilds
 RUN --mount=type=cache,target=/root/.cache/pip \
-    python3 -m venv ./apps/sim/lib/guardrails/venv && \
-    ./apps/sim/lib/guardrails/venv/bin/pip install --upgrade pip && \
-    ./apps/sim/lib/guardrails/venv/bin/pip install -r ./apps/sim/lib/guardrails/requirements.txt && \
-    chown -R nextjs:nodejs /app/apps/sim/lib/guardrails
+    python3 -m venv ./apps/nocobuilder/lib/guardrails/venv && \
+    ./apps/nocobuilder/lib/guardrails/venv/bin/pip install --upgrade pip && \
+    ./apps/nocobuilder/lib/guardrails/venv/bin/pip install -r ./apps/nocobuilder/lib/guardrails/requirements.txt && \
+    chown -R nextjs:nodejs /app/apps/nocobuilder/lib/guardrails
 
 # Create .next/cache directory with correct ownership
-RUN mkdir -p apps/sim/.next/cache && \
-    chown -R nextjs:nodejs apps/sim/.next/cache
+RUN mkdir -p apps/nocobuilder/.next/cache && \
+    chown -R nextjs:nodejs apps/nocobuilder/.next/cache
 
 # Switch to non-root user
 USER nextjs
@@ -133,4 +133,4 @@ EXPOSE 3000
 ENV PORT=3000 \
     HOSTNAME="0.0.0.0"
 
-CMD ["bun", "apps/sim/server.js"]
+CMD ["bun", "apps/nocobuilder/server.js"]

@@ -12,7 +12,7 @@ import { Step, Steps } from 'fumadocs-ui/components/steps'
 All API requests are made to:
 
 ```
-https://www.sim.ai
+https://www.nocobuilder.cloud
 ```
 
 ## Quick Start
@@ -31,7 +31,7 @@ Go to the Sim dashboard and navigate to **Settings → Sim Keys**, then click **
 Open a workflow in the Sim editor. The workflow ID is in the URL:
 
 ```
-https://www.sim.ai/workspace/{workspaceId}/w/{workflowId}
+https://www.nocobuilder.cloud/workspace/{workspaceId}/w/{workflowId}
 ```
 
 You can also use the [List Workflows](/api-reference/workflows/listWorkflows) endpoint to get all workflow IDs in a workspace.
@@ -49,7 +49,7 @@ A workflow must be deployed before it can be executed via the API. Click the **D
 <Tabs items={['curl', 'TypeScript', 'Python']}>
   <Tab value="curl">
     ```bash
-    curl -X POST https://www.sim.ai/api/workflows/{workflowId}/execute \
+    curl -X POST https://www.nocobuilder.cloud/api/workflows/{workflowId}/execute \
       -H "Content-Type: application/json" \
       -H "X-API-Key: YOUR_API_KEY" \
       -d '{"inputs": {}}'
@@ -58,7 +58,7 @@ A workflow must be deployed before it can be executed via the API. Click the **D
   <Tab value="TypeScript">
     ```typescript
     const response = await fetch(
-      `https://www.sim.ai/api/workflows/${workflowId}/execute`,
+      `https://www.nocobuilder.cloud/api/workflows/${workflowId}/execute`,
       {
         method: 'POST',
         headers: {
@@ -79,7 +79,7 @@ A workflow must be deployed before it can be executed via the API. Click the **D
     import os
 
     response = requests.post(
-        f"https://www.sim.ai/api/workflows/{workflow_id}/execute",
+        f"https://www.nocobuilder.cloud/api/workflows/{workflow_id}/execute",
         headers={
             "Content-Type": "application/json",
             "X-API-Key": os.environ["SIM_API_KEY"],
@@ -103,7 +103,7 @@ By default, workflow executions are **synchronous** — the API blocks until the
 For long-running workflows, use **asynchronous execution** by passing `async: true`:
 
 ```bash
-curl -X POST https://www.sim.ai/api/workflows/{workflowId}/execute \
+curl -X POST https://www.nocobuilder.cloud/api/workflows/{workflowId}/execute \
   -H "Content-Type: application/json" \
   -H "X-API-Key: YOUR_API_KEY" \
   -d '{"inputs": {}, "async": true}'
@@ -122,7 +122,7 @@ This returns immediately with a `taskId`:
 Poll the [Get Job Status](/api-reference/workflows/getJobStatus) endpoint until the status is `completed` or `failed`:
 
 ```bash
-curl https://www.sim.ai/api/jobs/{taskId} \
+curl https://www.nocobuilder.cloud/api/jobs/{taskId} \
   -H "X-API-Key: YOUR_API_KEY"
 ```
 
@@ -199,11 +199,11 @@ List endpoints (workflows, logs, audit logs) use **cursor-based pagination**:
 
 ```bash
 # First page
-curl "https://www.sim.ai/api/v1/logs?limit=20" \
+curl "https://www.nocobuilder.cloud/api/v1/logs?limit=20" \
   -H "X-API-Key: YOUR_API_KEY"
 
 # Next page — use the nextCursor from the previous response
-curl "https://www.sim.ai/api/v1/logs?limit=20&cursor=abc123" \
+curl "https://www.nocobuilder.cloud/api/v1/logs?limit=20&cursor=abc123" \
   -H "X-API-Key: YOUR_API_KEY"
 ```
 

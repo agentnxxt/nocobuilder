@@ -57,7 +57,7 @@ jobs:
       - name: Check if version already exists
         id: version_check
         run: |
-          if npm view simstudio-ts-sdk@${{ steps.package_version.outputs.version }} version &> /dev/null; then
+          if npm view nocobuilder-ts-sdk@${{ steps.package_version.outputs.version }} version &> /dev/null; then
             echo "exists=true" >> $GITHUB_OUTPUT
           else
             echo "exists=false" >> $GITHUB_OUTPUT
@@ -85,14 +85,14 @@ jobs:
           body: |
             ## TypeScript SDK v${{ steps.package_version.outputs.version }}
             
-            Published simstudio-ts-sdk@${{ steps.package_version.outputs.version }} to npm.
+            Published nocobuilder-ts-sdk@${{ steps.package_version.outputs.version }} to npm.
             
             ### Installation
             ```bash
-            npm install simstudio-ts-sdk@${{ steps.package_version.outputs.version }}
+            npm install nocobuilder-ts-sdk@${{ steps.package_version.outputs.version }}
             ```
             
             ### Documentation
-            See the [README](https://github.com/simstudioai/sim/tree/main/packages/ts-sdk) or the [docs](https://docs.sim.ai/sdks/typescript) for more information.
+            See the [README](https://github.com/nocobuilder/sim/tree/main/packages/ts-sdk) or the [docs](https://docs.nocobuilder.cloud/sdks/typescript) for more information.
           draft: false
           prerelease: false 

@@ -35,8 +35,8 @@ OLLAMA_URL=http://192.168.1.x:11434           # Linux (use actual IP)
 
 ```bash
 # Check app is running
-docker compose ps simstudio
-docker compose logs simstudio
+docker compose ps nocobuilder
+docker compose logs nocobuilder
 
 # Common causes: out of memory, database not ready
 ```
@@ -48,7 +48,7 @@ docker compose logs simstudio
 docker compose logs migrations
 
 # Run manually
-docker compose exec simstudio bun run db:migrate
+docker compose exec nocobuilder bun run db:migrate
 ```
 
 ## pgvector Not Found
@@ -64,7 +64,7 @@ If you see SSL certificate errors when calling external APIs:
 
 ```bash
 # Update CA certificates in container
-docker compose exec simstudio apt-get update && apt-get install -y ca-certificates
+docker compose exec nocobuilder apt-get update && apt-get install -y ca-certificates
 
 # Or set in environment (not recommended for production)
 NODE_TLS_REJECT_UNAUTHORIZED=0
@@ -101,10 +101,10 @@ git config --global core.autocrlf input
 docker compose logs -f
 
 # Specific service
-docker compose logs -f simstudio
+docker compose logs -f nocobuilder
 ```
 
 ## Getting Help
 
-- [GitHub Issues](https://github.com/simstudioai/sim/issues)
+- [GitHub Issues](https://github.com/nocobuilder/sim/issues)
 - [Discord](https://discord.gg/Hr4UWYEcTT)

@@ -4,14 +4,14 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name="simstudio-sdk",
+    name="nocobuilder-sdk",
     version="0.1.1",
     author="Sim",
-    author_email="help@sim.ai",
+    author_email="help@nocobuilder.cloud",
     description="Sim SDK - Execute workflows programmatically",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/simstudioai/sim",
+    url="https://github.com/nocobuilder/sim",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -42,10 +42,10 @@ setup(
             "pytest>=6.0.0",
         ],
     },
-    keywords=["simstudio", "ai", "workflow", "sdk", "api", "automation"],
+    keywords=["nocobuilder", "ai", "workflow", "sdk", "api", "automation"],
     project_urls={
-        "Bug Reports": "https://github.com/simstudioai/sim/issues",
-        "Source": "https://github.com/simstudioai/sim",
-        "Documentation": "https://docs.sim.ai",
+        "Bug Reports": "https://github.com/nocobuilder/sim/issues",
+        "Source": "https://github.com/nocobuilder/sim",
+        "Documentation": "https://docs.nocobuilder.cloud",
     },
 ) 

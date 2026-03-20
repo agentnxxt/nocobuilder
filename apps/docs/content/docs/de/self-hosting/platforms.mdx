@@ -14,7 +14,7 @@ Bereitstellung mit einem Klick und automatischer PostgreSQL-Bereitstellung.
 
 ![Auf Railway bereitstellen](https://railway.app/button.svg)
 
-](https://railway.com/new/template/sim-studio)
+](https://railway.com/new/template/nocobuilder)
 
 Nach der Bereitstellung fügen Sie Umgebungsvariablen im Railway-Dashboard hinzu:
 - `BETTER_AUTH_SECRET`, `ENCRYPTION_KEY`, `INTERNAL_API_SECRET` (automatisch generiert)
@@ -67,11 +67,11 @@ docker --version
 ### Sim bereitstellen
 
 ```bash
-git clone https://github.com/simstudioai/sim.git && cd sim
+git clone https://github.com/nocobuilder/sim.git && cd sim
 
 # Create .env with secrets
 cat > .env << EOF
-DATABASE_URL=postgresql://postgres:postgres@db:5432/simstudio
+DATABASE_URL=postgresql://postgres:postgres@db:5432/nocobuilder
 BETTER_AUTH_SECRET=$(openssl rand -hex 32)
 ENCRYPTION_KEY=$(openssl rand -hex 32)
 INTERNAL_API_SECRET=$(openssl rand -hex 32)

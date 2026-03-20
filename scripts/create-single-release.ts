@@ -4,7 +4,7 @@ import { execSync } from 'node:child_process'
 import { Octokit } from '@octokit/rest'
 
 const GITHUB_TOKEN = process.env.GH_PAT
-const REPO_OWNER = 'simstudioai'
+const REPO_OWNER = 'nocobuilder'
 const REPO_NAME = 'sim'
 
 if (!GITHUB_TOKEN) {

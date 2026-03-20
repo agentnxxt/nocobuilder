@@ -21,7 +21,7 @@ import { getApiSpecContent, openapi } from '@/lib/openapi'
 import { type PageData, source } from '@/lib/source'
 
 const SUPPORTED_LANGUAGES: Set<string> = new Set(i18n.languages)
-const BASE_URL = 'https://docs.sim.ai'
+const BASE_URL = 'https://docs.nocobuilder.cloud'
 
 function resolveLangAndSlug(params: { slug?: string[]; lang: string }) {
   const isValidLang = SUPPORTED_LANGUAGES.has(params.lang)
@@ -173,7 +173,7 @@ export default async function Page(props: { params: Promise<{ slug?: string[]; l
           />
         </Link>
         <Link
-          href='https://github.com/simstudioai/sim'
+          href='https://github.com/nocobuilder/sim'
           target='_blank'
           rel='noopener noreferrer'
           aria-label='GitHub'

@@ -14,7 +14,7 @@ import { Callout } from 'fumadocs-ui/components/callout'
 
 ![Railwayにデプロイ](https://railway.app/button.svg)
 
-](https://railway.com/new/template/sim-studio)
+](https://railway.com/new/template/nocobuilder)
 
 デプロイ後、Railwayダッシュボードで環境変数を追加してください：
 - `BETTER_AUTH_SECRET`, `ENCRYPTION_KEY`, `INTERNAL_API_SECRET` (自動生成)
@@ -67,11 +67,11 @@ docker --version
 ### Simのデプロイ
 
 ```bash
-git clone https://github.com/simstudioai/sim.git && cd sim
+git clone https://github.com/nocobuilder/sim.git && cd sim
 
 # Create .env with secrets
 cat > .env << EOF
-DATABASE_URL=postgresql://postgres:postgres@db:5432/simstudio
+DATABASE_URL=postgresql://postgres:postgres@db:5432/nocobuilder
 BETTER_AUTH_SECRET=$(openssl rand -hex 32)
 ENCRYPTION_KEY=$(openssl rand -hex 32)
 INTERNAL_API_SECRET=$(openssl rand -hex 32)

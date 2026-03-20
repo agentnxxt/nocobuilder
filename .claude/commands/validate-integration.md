@@ -21,14 +21,14 @@ When the user asks you to validate an integration:
 Read **every** file for the integration — do not skip any:
 
 ```
-apps/sim/tools/{service}/          # All tool files, types.ts, index.ts
-apps/sim/blocks/blocks/{service}.ts # Block definition
-apps/sim/tools/registry.ts          # Tool registry entries for this service
-apps/sim/blocks/registry.ts         # Block registry entry for this service
-apps/sim/components/icons.tsx        # Icon definition
-apps/sim/lib/auth/auth.ts           # OAuth config — should use getCanonicalScopesForProvider()
-apps/sim/lib/oauth/oauth.ts         # OAuth provider config — single source of truth for scopes
-apps/sim/lib/oauth/utils.ts               # Scope utilities, SCOPE_DESCRIPTIONS for modal UI
+apps/nocobuilder/tools/{service}/          # All tool files, types.ts, index.ts
+apps/nocobuilder/blocks/blocks/{service}.ts # Block definition
+apps/nocobuilder/tools/registry.ts          # Tool registry entries for this service
+apps/nocobuilder/blocks/registry.ts         # Block registry entry for this service
+apps/nocobuilder/components/icons.tsx        # Icon definition
+apps/nocobuilder/lib/auth/auth.ts           # OAuth config — should use getCanonicalScopesForProvider()
+apps/nocobuilder/lib/oauth/oauth.ts         # OAuth provider config — single source of truth for scopes
+apps/nocobuilder/lib/oauth/utils.ts               # Scope utilities, SCOPE_DESCRIPTIONS for modal UI
 ```
 
 ## Step 2: Pull API Documentation
@@ -186,7 +186,7 @@ For **each tool** in `tools.access`:
 - [ ] `name` is human-readable (e.g., `'X'`, `'Cloudflare'`)
 - [ ] `description` is a concise one-liner
 - [ ] `longDescription` provides detail for docs
-- [ ] `docsLink` points to `'https://docs.sim.ai/tools/{service}'`
+- [ ] `docsLink` points to `'https://docs.nocobuilder.cloud/tools/{service}'`
 - [ ] `category` is `'tools'`
 - [ ] `bgColor` uses the service's brand color hex
 - [ ] `icon` references the correct icon component from `@/components/icons`

@@ -17,15 +17,15 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const rootDir = path.resolve(__dirname, '..')
 
-const BLOCKS_PATH = path.join(rootDir, 'apps/sim/blocks/blocks')
+const BLOCKS_PATH = path.join(rootDir, 'apps/nocobuilder/blocks/blocks')
 const DOCS_OUTPUT_PATH = path.join(rootDir, 'apps/docs/content/docs/en/tools')
-const ICONS_PATH = path.join(rootDir, 'apps/sim/components/icons.tsx')
+const ICONS_PATH = path.join(rootDir, 'apps/nocobuilder/components/icons.tsx')
 const DOCS_ICONS_PATH = path.join(rootDir, 'apps/docs/components/icons.tsx')
 const LANDING_INTEGRATIONS_DATA_PATH = path.join(
   rootDir,
-  'apps/sim/app/(landing)/integrations/data'
+  'apps/nocobuilder/app/(landing)/integrations/data'
 )
-const TRIGGERS_PATH = path.join(rootDir, 'apps/sim/triggers')
+const TRIGGERS_PATH = path.join(rootDir, 'apps/nocobuilder/triggers')
 
 if (!fs.existsSync(DOCS_OUTPUT_PATH)) {
   fs.mkdirSync(DOCS_OUTPUT_PATH, { recursive: true })
@@ -314,7 +314,7 @@ function extractOperationsFromContent(blockContent: string): { label: string; id
 }
 
 /**
- * Scan all tool files under apps/sim/tools/ and build a map from tool ID to description.
+ * Scan all tool files under apps/nocobuilder/tools/ and build a map from tool ID to description.
  * Used to enrich operation entries with descriptions.
  */
 interface ToolMaps {
@@ -323,7 +323,7 @@ interface ToolMaps {
 }
 
 async function buildToolDescriptionMap(): Promise<ToolMaps> {
-  const toolsDir = path.join(rootDir, 'apps/sim/tools')
+  const toolsDir = path.join(rootDir, 'apps/nocobuilder/tools')
   const desc = new Map<string, string>()
   const name = new Map<string, string>()
   try {
@@ -566,7 +566,7 @@ async function writeIntegrationsJson(iconMapping: Record<string, string>): Promi
         const triggers: TriggerInfo[] = triggerIds
           .map((id) => triggerRegistry.get(id))
           .filter((t): t is TriggerInfo => t !== undefined)
-        const docsUrl = (config as any).docsLink || `https://docs.sim.ai/tools/${baseType}`
+        const docsUrl = (config as any).docsLink || `https://docs.nocobuilder.cloud/tools/${baseType}`
 
         const slug = config.name
           .toLowerCase()
@@ -760,7 +760,7 @@ function extractBlockConfigFromContent(
     const docsLink =
       extractStringPropertyFromContent(blockContent, 'docsLink', true) ||
       (baseConfig as any)?.docsLink ||
-      `https://docs.sim.ai/tools/${stripVersionSuffix(blockType)}`
+      `https://docs.nocobuilder.cloud/tools/${stripVersionSuffix(blockType)}`
 
     return {
       type: blockType,
@@ -1129,7 +1129,7 @@ function getToolPrefixFromName(toolName: string): string {
   // Try to find a valid tool directory
   for (let i = parts.length - 1; i >= 1; i--) {
     const possiblePrefix = parts.slice(0, i).join('_')
-    const toolDirPath = path.join(rootDir, `apps/sim/tools/${possiblePrefix}`)
+    const toolDirPath = path.join(rootDir, `apps/nocobuilder/tools/${possiblePrefix}`)
 
     if (fs.existsSync(toolDirPath) && fs.statSync(toolDirPath).isDirectory()) {
       return possiblePrefix
@@ -1166,7 +1166,7 @@ function resolveConstReference(
   }
 
   // Read the types file for this tool
-  const typesFilePath = path.join(rootDir, `apps/sim/tools/${toolPrefix}/types.ts`)
+  const typesFilePath = path.join(rootDir, `apps/nocobuilder/tools/${toolPrefix}/types.ts`)
   if (!fs.existsSync(typesFilePath)) {
     // Try to find const in the tool file itself
     return null
@@ -2312,7 +2312,7 @@ async function getToolInfo(toolName: string): Promise<{
       const possiblePrefix = parts.slice(0, i).join('_')
       const possibleSuffix = parts.slice(i).join('_')
 
-      const toolDirPath = path.join(rootDir, `apps/sim/tools/${possiblePrefix}`)
+      const toolDirPath = path.join(rootDir, `apps/nocobuilder/tools/${possiblePrefix}`)
 
       if (fs.existsSync(toolDirPath) && fs.statSync(toolDirPath).isDirectory()) {
         toolPrefix = possiblePrefix
@@ -2337,18 +2337,18 @@ async function getToolInfo(toolName: string): Promise<{
     if (isVersionedTool) {
       // First priority: exact versioned file (e.g., read_v2.ts)
       possibleLocations.push({
-        path: path.join(rootDir, `apps/sim/tools/${toolPrefix}/${toolSuffix}.ts`),
+        path: path.join(rootDir, `apps/nocobuilder/tools/${toolPrefix}/${toolSuffix}.ts`),
         priority: 'exact',
       })
       // Second priority: stripped file that contains both V1 and V2 (e.g., pr.ts for github)
       possibleLocations.push({
-        path: path.join(rootDir, `apps/sim/tools/${toolPrefix}/${strippedToolSuffix}.ts`),
+        path: path.join(rootDir, `apps/nocobuilder/tools/${toolPrefix}/${strippedToolSuffix}.ts`),
         priority: 'fallback',
       })
     } else {
       // Non-versioned tool: try the direct file
       possibleLocations.push({
-        path: path.join(rootDir, `apps/sim/tools/${toolPrefix}/${toolSuffix}.ts`),
+        path: path.join(rootDir, `apps/nocobuilder/tools/${toolPrefix}/${toolSuffix}.ts`),
         priority: 'exact',
       })
     }
@@ -2359,13 +2359,13 @@ async function getToolInfo(toolName: string): Promise<{
       .map((part, i) => (i === 0 ? part : part.charAt(0).toUpperCase() + part.slice(1)))
       .join('')
     possibleLocations.push({
-      path: path.join(rootDir, `apps/sim/tools/${toolPrefix}/${camelCaseSuffix}.ts`),
+      path: path.join(rootDir, `apps/nocobuilder/tools/${toolPrefix}/${camelCaseSuffix}.ts`),
       priority: 'fallback',
     })
 
     // Fall back to index.ts
     possibleLocations.push({
-      path: path.join(rootDir, `apps/sim/tools/${toolPrefix}/index.ts`),
+      path: path.join(rootDir, `apps/nocobuilder/tools/${toolPrefix}/index.ts`),
       priority: 'fallback',
     })
 

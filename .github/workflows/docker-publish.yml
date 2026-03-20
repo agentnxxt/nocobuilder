@@ -28,9 +28,6 @@ jobs:
           - dockerfile: mcp-servers/ghost-mcp-server/Dockerfile
             context: mcp-servers/ghost-mcp-server
             image: agentnxxt/ghost-mcp-server
-          - dockerfile: mcp-servers/hostinger-mcp/Dockerfile
-            context: mcp-servers/hostinger-mcp
-            image: agentnxxt/hostinger-mcp
           - dockerfile: mcp-servers/logto-mcp-server/Dockerfile
             context: mcp-servers/logto-mcp-server
             image: agentnxxt/logto-mcp-server

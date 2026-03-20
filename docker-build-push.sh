@@ -14,7 +14,6 @@ IMAGES=(
   "docker/realtime.Dockerfile|.|agentnxxt/nocobuilder-realtime"
   "docker/db.Dockerfile|.|agentnxxt/nocobuilder-migrations"
   "mcp-servers/ghost-mcp-server/Dockerfile|mcp-servers/ghost-mcp-server|agentnxxt/ghost-mcp-server"
-  "mcp-servers/hostinger-mcp/Dockerfile|mcp-servers/hostinger-mcp|agentnxxt/hostinger-mcp"
   "mcp-servers/logto-mcp-server/Dockerfile|mcp-servers/logto-mcp-server|agentnxxt/logto-mcp-server"
 )
 

@@ -109,19 +109,6 @@ services:
       nocobuilder:
         condition: service_healthy
 
-  hostinger-mcp:
-    build:
-      context: mcp-servers/hostinger-mcp
-      dockerfile: Dockerfile
-    restart: unless-stopped
-    ports:
-      - '8000:8000'
-    environment:
-      - HOSTINGER_API_KEY=${HOSTINGER_API_KEY}
-    depends_on:
-      nocobuilder:
-        condition: service_healthy
-
   logto-mcp:
     build:
       context: mcp-servers/logto-mcp-server
